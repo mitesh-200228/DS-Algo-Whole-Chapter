@@ -1,0 +1,17 @@
+{
+    "git.ignoreLimitWarning": true,
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp"
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}
