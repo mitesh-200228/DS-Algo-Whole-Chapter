@@ -14,12 +14,9 @@
 #include<cmath>
 #include<math.h>
 #include<limits>
- 
 #define ll long long int
 const ll N = 1e5+ 2,MOD = 1e9+7;
 using namespace std;
- 
-// best for finding power of a^b in O(logn)
 int power(ll a,ll b) {
     ll ans = 1;
     while(b>0){
@@ -30,6 +27,15 @@ int power(ll a,ll b) {
     }
     return ans;
 }
+ll countSetBits(ll n) {
+    ll count = 0;
+    while (n)
+    {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
  
 ll gcd(ll a, string b){
     ll res = 0;
@@ -38,32 +44,31 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
+// 1 2 3 3 4
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
-    vector<ll> v(n);
-    unordered_map<ll,ll> m;
+    std::vector<pair<ll,ll>> v(n);
     for(ll i=0;i<n;i++){
-        cin>>v[i];
-        m[v[i]] = i;
+        cin>>v[i].first>>v[i].second;
     }
-
-    ll el = n;
-    while(k--){
-        ll curr = el;
-        ll curr_idx = m[curr];
-        // cout<<curr_idx<<endl<<endl;
-        ll new_idx = n-curr;        
-        ll el_to_be_swaped = v[new_idx];
-        std::swap(v[curr_idx],v[new_idx]);
-        m[curr] = new_idx;
-        m[el_to_be_swaped] = curr_idx;
-        el--;
-    }
-
-    for(ll i=0; i<n ;i++){
-        cout<<v[i]<<" ";   
-    }
+    std::sort(v.begin(),v.end());
+    ll x = v[0].second;
+    ll c = 2;
+    for(ll i=1;i<n;i++){
+        // ll y=1;
+        if(v[i].first < x){
+            // y++; 
+            // if(y>c){
+                // c = y;
+            // }
+            c++;
+        }else{
+            x = v[i].second;
+            c--;
+        } 
+        cout<<c<<" ";
+    }cout<<endl;
+    // cout<<c<<endl;
 }
  
 int main()

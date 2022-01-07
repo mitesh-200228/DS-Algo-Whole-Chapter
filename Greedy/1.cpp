@@ -1,5 +1,3 @@
-// https://leetcode.com/problems/largest-number/
-
 #include<unordered_set>
 #include<stack>
 #include<iostream>
@@ -16,12 +14,9 @@
 #include<cmath>
 #include<math.h>
 #include<limits>
- 
 #define ll long long int
 const ll N = 1e5+ 2,MOD = 1e9+7;
 using namespace std;
- 
-// best for finding power of a^b in O(logn)
 int power(ll a,ll b) {
     ll ans = 1;
     while(b>0){
@@ -32,6 +27,15 @@ int power(ll a,ll b) {
     }
     return ans;
 }
+ll countSetBits(ll n) {
+    ll count = 0;
+    while (n)
+    {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
  
 ll gcd(ll a, string b){
     ll res = 0;
@@ -40,31 +44,36 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
-
-bool cmp(std::string &s1,std::string &s2){
-    return (s1+s2) > (s2+s1);
+ 
+bool func(std::pair<ll,ll> p1,std::pair<ll,ll> p2){
+    return p1.second < p2.second;
 }
 
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0; i<n ;i++){
-        cin>>v[i];   
+    std::vector<pair<ll,ll>> v(n);
+    std::vector<ll> start(n);
+    std::vector<ll> end(n);
+    for(ll i=0;i<n;i++){
+        cin>>start[i];
     }
-    std::vector<std::string> arr;
-    for(ll i=0; i<v.size() ;i++){
-        arr.emplace_back(std::to_string(v[i]));
-    }   
-    std::sort(arr.begin(),arr.end(),cmp);
-    if(arr[0] == "0"){
-        cout<<"0"<<endl;
-        return;
+    for(ll i=0;i<n;i++){
+        cin>>end[i];   
     }
-    std::string result = "";
-    for(auto &str:arr){
-        result += str;
+    for(ll i=0;i<n;i++){
+        v[i].first = start[i];
+        v[i].second = end[i];
     }
-    cout<<result<<endl;
+    std::sort(v.begin(),v.end(),func);
+    ll c = 1;
+    ll x = v[0].second;
+    for(ll i=0;i<n-1;i++){
+        if(x < v[i+1].first){
+            c++;
+            x = v[i+1].second;
+        }
+    }
+    cout<<c<<endl;
 }
  
 int main()

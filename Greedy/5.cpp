@@ -1,8 +1,3 @@
-// You are given a ropes of diff lengths. we need to 
-// merge them into one rope . cost of merge to ropes is 
-// equal to sum of lenghts of that ropes . merge all ropes
-// such that cost will becomes minimum
-
 #include<unordered_set>
 #include<stack>
 #include<iostream>
@@ -19,12 +14,9 @@
 #include<cmath>
 #include<math.h>
 #include<limits>
- 
 #define ll long long int
 const ll N = 1e5+ 2,MOD = 1e9+7;
 using namespace std;
- 
-// best for finding power of a^b in O(logn)
 int power(ll a,ll b) {
     ll ans = 1;
     while(b>0){
@@ -35,6 +27,15 @@ int power(ll a,ll b) {
     }
     return ans;
 }
+ll countSetBits(ll n) {
+    ll count = 0;
+    while (n)
+    {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
  
 ll gcd(ll a, string b){
     ll res = 0;
@@ -43,26 +44,34 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
+ 
+bool compare(pair<ll,ll> p1,pair<ll,ll> p2){
+    double v1 = (double) p1.first / p1.second;
+    double v2 = (double) p2.first / p2.second;
+    return v1 > v2;
+}
+
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
+    ll w;cin>>w;
+    std::vector<pair<ll,ll>> v(n);
     for(ll i=0;i<n;i++){
-        cin>>v[i];
+        cin>>v[i].first>>v[i].second;   
     }
-    sort(v.begin(),v.end());
-
-    vector<ll> pref(n,0);
-    pref[0] = v[0];
-    for(ll i=1; i<n ;i++){
-        pref[i] = v[i] + pref[i-1];   
-        cout<<pref[i]<<" ";
+    std::sort(v.begin(),v.end(),compare);
+    ll ans = 0;
+    for(ll i=0;i<n;i++){
+        if(w >= v[i].second){
+            ans += v[i].first;
+            w = w - v[i].second;
+            continue;
+        }
+        double vw = (double) v[i].first / v[i].second;
+        ans += vw*w;
+        w = 0;
+        break;    
     }
-    cout<<endl;
-    ll sum = 0;
-    for(ll i=0; i<n ;i++){
-        sum += pref[i];   
-    }
-    cout<<sum-pref[0]<<endl;
+    cout<<ans<<endl;
 }
  
 int main()

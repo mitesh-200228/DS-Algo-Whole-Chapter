@@ -1,5 +1,3 @@
-// https://www.codechef.com/problems/RAMDEV
-
 #include <unordered_set>
 #include <stack>
 #include <iostream>
@@ -16,12 +14,9 @@
 #include <cmath>
 #include <math.h>
 #include <limits>
-
 #define ll long long int
 const ll N = 1e5 + 2, MOD = 1e9 + 7;
 using namespace std;
-
-// best for finding power of a^b in O(logn)
 int power(ll a, ll b)
 {
     ll ans = 1;
@@ -36,6 +31,16 @@ int power(ll a, ll b)
     }
     return ans;
 }
+ll countSetBits(ll n)
+{
+    ll count = 0;
+    while (n)
+    {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
 
 ll gcd(ll a, string b)
 {
@@ -46,24 +51,42 @@ ll gcd(ll a, string b)
     }
     return __gcd(a, res);
 }
+
+struct Job
+{
+    char id;
+    ll dead;
+    ll profit;
+};
+
+bool comparison(Job a, Job b)
+{
+    return (a.profit > b.profit);
+}
+
 void solve()
 {
-    ll l, b;
-    cin >> l >> b;
-    ll n;
-    cin >> n;
-    ll sum = 0;
+    Job v[] = {{'a', 2, 100}, {'b', 1, 19}, {'c', 2, 27}, {'d', 1, 25}, {'e', 3, 15}};
+    ll n = sizeof(v)/sizeof(v[0]);
+    std::sort(v, v + n, comparison);
+    ll result[n];
+    bool slot[n];
+    for (int i = 0; i < n; i++)
+        slot[i] = false;
 
-    while (n--)
-    {
-        ll L, B;
-        cin >> L >> B;
-
-        ll x = (L / l) * (B / b);
-        ll y = (L / b) * (B / l);
-        sum += max(x, y);
+    for (ll i = 0; i < n; i++){
+        for (ll j = min(n, v[i].dead) - 1; j >= 0; j--){
+            if (slot[j] == false){
+                result[j] = i;  
+                slot[j] = true; 
+                break;
+            }
+        }
     }
-    cout<<sum<<endl;
+
+    for (int i = 0; i < n; i++)
+        if (slot[i])
+            cout << v[result[i]].id << " ";
 }
 
 int main()
