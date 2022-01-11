@@ -31,15 +31,21 @@ public:
         right = NULL;
     }
 };
-int x = 1;
+ll f = 1;
 void solve(Node* root,ll h,ll &ans){
-    if(!root) return;
-    if(x == 0) return;
+    if(!root) return;   
     if(!root->left && !root->right){
         if(ans == -1){
-            h = 
+            ans = h;
+        }else{
+            if(h!=ans){
+                f = 0;
+            }
         }
+        return;
     }
+    solve(root->left,h+1,ans);
+    solve(root->right,h+1,ans);
 }
 
 int main()
