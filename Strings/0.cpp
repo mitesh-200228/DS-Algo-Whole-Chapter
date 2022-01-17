@@ -47,22 +47,14 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
-        }
+    ll a,b,c;
+    cin>>a>>b>>c;
+
+    if((a+c)%(2*b) == 0 || (2*b-a)%c == 0 || (2*b-c)%a == 0){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
 }
  
 int main()

@@ -1,3 +1,5 @@
+// https://www.codechef.com/JAN222C/problems/POWSUM
+
 #include<unordered_set>
 #include<stack>
 #include<iostream>
@@ -46,23 +48,26 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
-        }
+void POWERSUM(std::vector<ll> v,ll n,ll mx,ll sum){
+    if(mx == sum){
+        cout<<"0"<<endl;
+        return;
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
+    ll difference = mx / sum;
+         
+}
+
+void solve(){
+    ll n;cin>>n;
+    vector<ll> v(n);
+    ll mx = INT_MIN;
+    ll sum = 0;
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+        sum += v[i];
+        mx = max(mx,v[i]);
+    }
+    POWERSUM(v,n,mx,sum-mx);
 }
  
 int main()

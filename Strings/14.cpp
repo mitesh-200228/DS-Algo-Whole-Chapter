@@ -47,22 +47,11 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
-        }
+    ll n;cin>>n;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
 }
  
 int main()

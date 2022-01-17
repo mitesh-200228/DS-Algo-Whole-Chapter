@@ -46,25 +46,24 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
-        }
+void solve(string s,ll n,ll index = -1,string t = ""){
+    if(index == n){
+        return;
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
+    if(!t.empty()){
+        cout<<t<<endl;
+    }
+    for(ll i=index+1;i<n;i++){
+        t += s[i];
+        solve(s,n,i,t);
+        t = t.erase(t.size()-1);
+    }
 }
- 
+
+void solve1(string s,ll n){
+    solve(s,n);
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -75,7 +74,8 @@ int main()
     cin>>t;
     while(t--)
     {
-        solve();
+        string s;cin>>s;
+        solve1(s,s.length());
     }
     return 0;
 }

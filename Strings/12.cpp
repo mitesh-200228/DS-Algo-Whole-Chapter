@@ -47,22 +47,21 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
-        }
+    string s;
+    cin>>s;
+
+    ll zero = 0,one=0,cnt=0;
+    for(ll i=0;i<n;i++){
+        if(s[i] == '1'){
+            one++;
+        }else zero++;
+        if(one == zero) cnt++;
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
+    if(one != zero) {
+        cout<<"-1"<<endl;
+        return;
+    }
+    cout<<cnt<<endl;
 }
  
 int main()

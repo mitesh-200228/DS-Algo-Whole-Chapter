@@ -45,24 +45,36 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
+std::vector<ll> powers(N);
  
+ll calculate_hash(string s){
+    ll hash = 0;
+    ll n = s.size();
+    for(ll i=0;i<n;i++){
+        hash = (hash + (s[i]-'a' + 1)*powers[i])%MOD;
+    }
+    return hash;    
+}
+
 void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
+    ll p = 31;
+    powers[0] = 1;
+    std::vector<string> strings = {"aa","ab","a","b","bb","ba","cc","ca","ac"}; 
+    for(ll i=1;i<N;i++){
+        powers[i] = (powers[i-1]*2)%MOD;
+    }
+    std::vector<ll> hashes;
+    for(auto i:strings){
+        hashes.push_back(calculate_hash(i));
+    }
+    sort(hashes.begin(),hashes.end());
+    ll distinct = 0;
+    for(ll i=0;i<hashes.size();i++){
+        if(i == 0 || hashes[i] != hashes[i-1]){
+            distinct++;
         }
     }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
+    cout<<distinct<<endl;
 }
  
 int main()
