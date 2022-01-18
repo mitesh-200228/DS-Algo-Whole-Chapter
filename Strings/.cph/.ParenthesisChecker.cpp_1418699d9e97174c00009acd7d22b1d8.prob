@@ -1,0 +1,1 @@
+{"name":"Local: ParenthesisChecker","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\ParenthesisChecker.cpp","tests":[{"id":1642536855354,"input":"1\n({[]})","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\ParenthesisChecker.cpp","group":"local","local":true}
