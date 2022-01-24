@@ -51,7 +51,8 @@ int main()
     cout.tie(0);
     string s = "iloveicecreamandmango";
     string result = "";
-    ll n = s.size();
+    ll n = s.length();
+    // cout<<n<<endl;s
     wordBreak(s,n,result);
     return 0;
 }

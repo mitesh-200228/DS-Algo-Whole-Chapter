@@ -1,47 +1,65 @@
-#include<unordered_set>
-#include<stack>
-#include<iostream>
-#include<vector>
-#include<string>
-#include<numeric>
-#include<algorithm>
-#include<queue>
-#include<stack>
-#include<map>
-#include<unordered_map>
-#include<set>
-#include<climits>
-#include<cmath>
-#include<math.h>
-#include<limits>
- 
-#define ll long long int
-const ll N = 1e5+ 2,MOD = 1e9+7;
+#include <iostream>
+#include <queue>
+#include <set>
+#include <stack>
 using namespace std;
 
-bool isValid(char c){
-    return ((c == '(') || (c == ')'));
+bool isParenthesis(char c){
+	return ((c == '(') || (c == ')'));
 }
 
 bool isValidString(string str){
-    ll cnt = 0;
-    for(ll i=0; i<str.length();i++){
-        if(str[i] == '('){
-            cnt++;
-        }else if(str[i] == ')'){
-            cnt--;
-        }
-    }
-    return (cnt == 0);
+	int cnt = 0;
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (str[i] == '(')
+			cnt++;
+		else if (str[i] == ')')
+			cnt--;
+		if (cnt < 0)
+			return false;
+	}
+	return (cnt == 0);
 }
 
+void removeInvalidParenthesis(string str){
+	if (str.empty())
+		return ;
+	set<string> visit;
 
+	queue<string> q;
+	string temp;
+	bool level;
+
+	q.push(str);
+	visit.insert(str);
+	while (!q.empty()){
+		str = q.front(); q.pop();
+		if (isValidString(str)){
+			cout << str << endl;
+			level = true;
+		}
+		if (level)
+			continue;
+		for (int i = 0; i < str.length(); i++){
+			if (!isParenthesis(str[i]))
+				continue;
+			temp = str.substr(0, i) + str.substr(i + 1);
+			if (visit.find(temp) == visit.end()){
+				q.push(temp);
+				visit.insert(temp);
+			}
+		}
+	}
+}
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
- 
-    return 0;
+	string expression = "()())()";
+	removeInvalidParenthesis(expression);
+
+	expression = "()v)";
+	removeInvalidParenthesis(expression);
+
+	return 0;
 }
