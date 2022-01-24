@@ -1,0 +1,1 @@
+{"name":"Local: FirstRepeated","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\FirstRepeated.cpp","tests":[{"id":1642855394967,"input":"1\n7\nghi ghi ghi ghi ghi ghi aaa","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\FirstRepeated.cpp","group":"local","local":true}

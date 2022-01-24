@@ -1,1 +1,0 @@
-{"name":"Local: LongestRecurringSubstring","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\LongestRecurringSubstring.cpp","tests":[{"id":1642535291871,"input":"1\n4\naabb","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\LongestRecurringSubstring.cpp","group":"local","local":true}

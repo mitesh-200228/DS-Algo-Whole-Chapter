@@ -1,0 +1,1 @@
+{"name":"Local: NumberOfFlip","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\NumberOfFlip.cpp","tests":[{"id":1642853106920,"input":"2\n001\n0001010111","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\NumberOfFlip.cpp","group":"local","local":true}

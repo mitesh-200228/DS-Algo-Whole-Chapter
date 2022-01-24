@@ -1,0 +1,1 @@
+{"name":"Local: op","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\op.cpp","tests":[{"id":1642948659023,"input":"3\n2\n4 5\n5\n2 2 2 2 2\n4\n3 1 4 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\op.cpp","group":"local","local":true}

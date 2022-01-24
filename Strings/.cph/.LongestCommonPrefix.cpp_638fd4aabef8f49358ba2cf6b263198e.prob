@@ -1,0 +1,1 @@
+{"name":"Local: LongestCommonPrefix","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\LongestCommonPrefix.cpp","tests":[{"id":1642851556559,"input":"2\n3\ndog racecar car\n3\nflower flowt flowir","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\LongestCommonPrefix.cpp","group":"local","local":true}

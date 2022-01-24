@@ -1,1 +1,0 @@
-{"name":"Local: Count Palindromic Subsequences","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\Count Palindromic Subsequences.cpp","tests":[{"id":1642773347255,"input":"1 4\nabcd","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Strings\\Count Palindromic Subsequences.cpp","group":"local","local":true}
