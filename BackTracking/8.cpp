@@ -1,0 +1,91 @@
+#include<unordered_set>
+#include<stack>
+#include<iostream>
+#include<vector>
+#include<string>
+#include<numeric>
+#include<algorithm>
+#include<queue>
+#include<stdio.h>
+#include<cstring>
+#include<stack>
+#include<map>
+#include<unordered_map>
+#include<set>
+#include<climits>
+#include<cmath>
+#include<math.h>
+#include<limits>
+#define ll long long int
+const ll N = 1e5+ 2,MOD = 1e9+7;
+using namespace std;
+int power(ll a,ll b) {
+    ll ans = 1;
+    while(b>0){
+        if(b%2){
+            ans=ans*a;
+        }
+        a=a*a;b>>=1;
+    }
+    return ans;
+}
+ll countSetBits(ll n) {
+    ll count = 0;
+    while (n)
+    {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
+ 
+ll gcd(ll a, string b){
+    ll res = 0;
+    for (int i = 0; i < b.length(); i++){
+        res = ((res * 10) + (b[i] - '0')) % a;
+    }
+    return __gcd(a,res);
+}
+
+bool PArtitioArray(vector<ll> &v,ll n,ll dp[][],ll sum){
+    if(n == 1){
+        return false;
+    }
+    if(dp[n][sum]!=-1){
+        return dp[n][sum];
+    }
+    return PArtitioArray(v,n-1,dp,sum-v[i])
+}
+
+void solve(){
+    ll n;cin>>n;
+    vector<ll> v(n);
+    ll sum = 0;
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+        sum += v[i];
+    }
+    bool dp[n+1][sum+1];
+    memset(dp,-1,sizeof(dp));
+    if(sum%2 != 0){
+        cout<<"0"<<endl;
+    }else{
+        ll i = 0;
+        cout<<PArtitioArray(v,n,dp,sum)<<endl;
+    }
+}
+ 
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+ 
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
