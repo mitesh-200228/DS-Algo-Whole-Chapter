@@ -4,8 +4,10 @@
 #include<vector>
 #include<string>
 #include<numeric>
+#include<cstring>
 #include<algorithm>
 #include<queue>
+#include <stdio.h>
 #include<stack>
 #include<map>
 #include<unordered_map>
@@ -45,22 +47,15 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-void reverse1(string s,ll n,ll k){
-    if(k == 0){
-        return;
-    }
-    reverse(s.begin(),s.begin()+k);
-    if(k == 1){
-        cout<<s<<endl;
-    }
-    reverse1(s,n,k-1);   
-}
-
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
     string s;cin>>s;
-    reverse1(s,n,k);
+    ll m;cin>>m;
+    string t;
+    for(ll i=0;i<m;i++){
+        t+='a'+i;
+    }
+    
 }
  
 int main()

@@ -11,6 +11,7 @@
 #include<unordered_map>
 #include<set>
 #include<climits>
+#include<cstring>
 #include<cmath>
 #include<math.h>
 #include<limits>
@@ -65,7 +66,7 @@ ll ans(ll n,ll p,ll q,ll r){
     if(r<=n){
         c = ans(n-r,p,q,r);
     }
-    return dp[n] = 1+max(a,max(b,c));
+    return dp[n] = 1 + max({a,b,c});
 }
 
 void solve(){
@@ -73,7 +74,7 @@ void solve(){
     memset(dp,-1,sizeof(dp));
     ll p,q,r;
     cin>>p>>q>>r;
-    ans(n,p,q,r);
+    cout<<ans(n,p,q,r);
 }
  
 int main()
