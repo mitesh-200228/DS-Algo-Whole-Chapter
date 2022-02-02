@@ -11,6 +11,7 @@
 #include<unordered_map>
 #include<set>
 #include<climits>
+#include<cstring>
 #include<cmath>
 #include<math.h>
 #include<limits>
@@ -57,8 +58,8 @@ void solve(){
             cin>>gold[i][j];   
         }   
     }
-    ll dp[n][m];
-    std::memset(dp,0,sizeof(dp));
+    vector<vector<ll>> dp(n,vector<ll>(m,0));
+    // memset(dp,0,sizeof(dp));
 
     for(ll col=m-1;col>=0;col--){
         for(ll row=0;row<=n-1;row++){
@@ -73,7 +74,7 @@ void solve(){
     for(ll i=1;i<m;i++){
         res = max(res,dp[i][0]);
     }
-    return res;
+    cout<<res<<endl;
 }
  
 int main()

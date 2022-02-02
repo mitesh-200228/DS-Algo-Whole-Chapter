@@ -47,10 +47,15 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
+    ll k;cin>>k;
+    std::vector<ll> dp(n+1);
+    dp[0] = 0;
+    dp[1] = k;
+    dp[2] = k*k;
+    for(ll i=3;i<=n;i++){
+        dp[i] = dp[i-1]*(k-1) + dp[i-2]*(k-1);
     }
+    cout<<dp[n]<<endl;
 }
  
 int main()
