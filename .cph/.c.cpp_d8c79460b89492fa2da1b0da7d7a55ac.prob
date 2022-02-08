@@ -1,1 +1,1 @@
-{"name":"Local: c","url":"d:\\C++\\DS-Algo-Whole-Chapter\\c.cpp","tests":[{"id":1643466772662,"input":"5\n1 1\n3 2\n4 1\n7 6\n1 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\c.cpp","group":"local","local":true}
+{"name":"Local: c","url":"d:\\C++\\DS-Algo-Whole-Chapter\\c.cpp","tests":[{"id":1643466772662,"input":"2\n3 0\n110\n6 1\n101100\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\c.cpp","group":"local","local":true}

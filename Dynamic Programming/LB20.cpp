@@ -50,19 +50,20 @@ ll gcd(ll a, string b){
 void solve(){
     ll n;cin>>n;
     ll k;cin>>k;
-    string s;cin>>s;
-
-    ll cnt = 0;
-    for(ll i=0;i<n/2;i++){
-        if(s[i] != s[n-i-1]){
-            cnt++;
-        }
+    std::vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
     }
-    if(cnt==k){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
+    std::vector<vector<ll>> dp(1+k,vector<ll>(1+n,0));
+    for(ll i=0;i<=k;i++){
+        for(ll j=1;j<=n;j++){
+            dp[i][j] = dp[i][j-1];
+            if(v[j-1]<=i){
+                dp[i][j] += dp[i/v[j-1]][j-1] + 1;
+            }
+        }   
     }
+    cout<<dp[k][n]<<endl;
 }
  
 int main()

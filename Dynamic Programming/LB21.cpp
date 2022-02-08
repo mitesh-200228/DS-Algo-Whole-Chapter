@@ -49,13 +49,23 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    string s;cin>>s;
-    ll m;cin>>m;
-    string t;
-    for(ll i=0;i<m;i++){
-        t+='a'+i;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
     }
-    
+    std::vector<ll> dp(n,1);
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<i;j++){
+            if(abs(v[j] - v[i]) == 1){
+                dp[i] = max(dp[i],dp[j] + 1);
+            }
+        }
+    }
+    ll ans = INT_MIN;
+    for(auto i:dp){
+        ans=max(ans,i);
+    }
+    cout<<ans<<endl;
 }
  
 int main()

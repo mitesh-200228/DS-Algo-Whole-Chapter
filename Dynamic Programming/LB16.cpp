@@ -49,20 +49,22 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
-    string s;cin>>s;
-
-    ll cnt = 0;
-    for(ll i=0;i<n/2;i++){
-        if(s[i] != s[n-i-1]){
-            cnt++;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
+    std::vector<vector<ll>> dp(n+1,vector<ll>(1+n,INT_MIN));
+    for(ll i=0;i<=n;i++){
+        for (ll j = 0; j <=n; j++){
+            if(i == 0 || j == 0) dp[i][j] = 0;
+            if(v[i]<=v[j]){
+                dp[i][j] = dp[i - 1][j] + 1;
+            }else{
+                dp[i][j] = max(dp[i - 1][j],dp[i][j-1]);
+            }
         }
     }
-    if(cnt==k){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
-    }
+    cout<<dp[n][n]<<endl;
 }
  
 int main()
