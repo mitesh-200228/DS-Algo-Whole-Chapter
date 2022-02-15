@@ -4,6 +4,7 @@
 #include<vector>
 #include<string>
 #include<numeric>
+#include<cstring>
 #include<algorithm>
 #include<queue>
 #include <stdio.h>
@@ -47,23 +48,16 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x,s;
-    cin>>x>>s;
-
-    if(x == 1){
-        cout<<s<<endl;
-        return;
+    ll n;cin>>n;
+    set<ll> X;
+    set<ll> Y;
+    for(ll i=0;i<n;i++){
+        ll a;cin>>a;
+        ll b;cin>>b;   
+        X.insert(a);
+        Y.insert(b);
     }
-    if(x%2 == 0 && s%2 != 0){
-        cout<<"-1"<<endl;
-        return;
-    }
-    vector<ll> v;
-    for(ll i=1;i<=x;i++){
-        if((i|x) == x){
-            v.push_back(i);
-        }
-    }
+    cout<<X.size() + Y.size()<<endl;
 }
  
 int main()
