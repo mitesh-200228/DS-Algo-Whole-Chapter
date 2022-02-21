@@ -1,4 +1,3 @@
-// https://codeforces.com/contest/1638/problem/A
 #include<unordered_set>
 #include<stack>
 #include<iostream>
@@ -50,40 +49,15 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
-    ll mn = INT_MAX;
-    ll mx = INT_MIN;
-    unordered_map<ll,ll> ump;
-    for(ll i=1;i<=n;i++){
-        cin>>v[i];
-        ump[v[i]] = i;
-    }
-    ll a = 1;
-    ll startPnt = 1;
-    ll endPnt = n;
-    if(n == 1){
-        cout<<v[1]<<endl;
-        return;
-    }
-    for(ll i=1;i<=n;i++){
-        if(v[i]!=i){
-            for(auto i:ump){
-                if(i.first == a){
-                    endPnt = i.second;
-                    break;
-                }
-            }
-        }else{  
-            startPnt++;
-            a++;
+    ll k;cin>>k;
+    while(k--){
+        if(n%10 == 0){
+            n/=10;
+        }else{
+            n-=1;
         }
-    }   
-    for(ll i=startPnt;i<=endPnt;i++){
-        swap(v[i],v[n-i]);
     }
-    for(ll i=1;i<=n;i++){
-        cout<<v[i]<<" ";   
-    }cout<<endl;
+    cout<<n<<endl;
 }
  
 int main()
@@ -92,8 +66,8 @@ int main()
     cin.tie(0);
     cout.tie(0);
  
-    ll t;
-    cin>>t;
+    ll t=1;
+    // cin>>t;
     while(t--)
     {
         solve();
