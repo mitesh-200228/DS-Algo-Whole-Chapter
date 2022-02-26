@@ -1,1 +1,0 @@
-{"name":"Local: lp","url":"d:\\C++\\DS-Algo-Whole-Chapter\\lp.cpp","tests":[{"id":1644416882820,"input":"4\n2\n0 0 0 1\n2\n0 0 1 1\n3\n1 3 2 3 3 2\n3\n0 0 1 1 1 2\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\lp.cpp","group":"local","local":true}

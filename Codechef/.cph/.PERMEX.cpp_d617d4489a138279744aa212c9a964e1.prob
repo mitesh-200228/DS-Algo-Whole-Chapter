@@ -1,1 +1,0 @@
-{"name":"Local: PERMEX","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\PERMEX.cpp","tests":[{"id":1645469605828,"input":"4\n2\n111\n5\n110100\n5\n110101\n7\n11100111\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\PERMEX.cpp","group":"local","local":true}

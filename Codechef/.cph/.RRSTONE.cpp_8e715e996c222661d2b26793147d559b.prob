@@ -1,1 +1,0 @@
-{"name":"Local: RRSTONE","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\RRSTONE.cpp","tests":[{"id":1644931441085,"input":"3\n4 1\n5 -1 7 0\n4 0\n4 4 4 4\n4 5\n1 9 2 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\RRSTONE.cpp","group":"local","local":true}
