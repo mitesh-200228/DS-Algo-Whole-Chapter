@@ -49,22 +49,36 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v;
-    for(ll i=0;i<n;i++){
-        ll temp;
-        cin>>temp;
-        auto it = upper_bound(v.begin(),v.end(),temp);
-        // cout<<*it<<endl;
-        if(it == v.end()){
-            v.push_back(temp);
-        }else{
-            *it = temp;
+    ll m;cin>>m;
+    std::vector<std::pair<ll,ll>> p(n);
+    std::vector<ll> v(m);
+    std::vector<ll> ans(10e9,0);
+    ll j = n;
+    while(j) {
+        ll a,b;cin>>a;cin>>b;
+        for(ll i=a;i<=b;i++){
+            ans[i] = 1;
+        }
+        j--;
+    }
+    ll k = m;
+    while(k--) {
+        ll x;cin>>x;
+        if(ans[x] && ans[x+1]){
+            cout<<"0"<<endl;
+            continue;
+        }else if(ans[x] && !ans[x+1]){
+            ll p = x;
+            while(!ans[p]){
+                p++;
+            }
+            if(p<10e9) {
+                cout<<abs(p-x+1)<<endl;
+            }else{
+                cout<<"-1"<<endl;
+            }
         }
     }
-    cout<<v.size()<<" ";
-    for(auto i:v){
-        cout<<i<<" ";
-    }cout<<endl;
 }
  
 int main()
