@@ -19,15 +19,16 @@
 #define ll long long int
 const ll N = 1e5+ 2,MOD = 1e9+7;
 using namespace std;
-int power(ll a,ll b) {
+ll power(ll a,ll b) {
     ll ans = 1;
     while(b>0){
         if(b%2){
-            ans=ans*a;
+            ans=(ans*a)%MOD;
         }
-        a=a*a;b>>=1;
+        a=(a*a)%MOD;
+        b>>=1;
     }
-    return ans;
+    return ans%MOD;
 }
 ll countSetBits(ll n) {
     ll count = 0;
@@ -49,27 +50,13 @@ ll gcd(ll a, string b){
  
 void solve(){
     ll n;cin>>n;
-    ll a;
-    map<ll,ll> mp; 
+    ll A;cin>>A;
+    ll k = A;
+    ll pi = 1;
+    ll sum = 0;
     for(ll i=0;i<n;i++){
-        cin>>a;
-        for(ll j=2;j*j<=a;j++){
-            ll cnt = 0;
-            while(a%j==0){
-                cnt++; 
-                a/=j;
-            }
-            mp[j] += cnt;
-        }
-        if(a>1){
-            mp[a] += 1;
-        }
+        sum += power(k,)   
     }
-    ll ans = 1;
-    for(auto i:mp) {
-        ans *= (i.second+1); 
-    }
-    cout<<ans<<endl;
 }
  
 int main()
