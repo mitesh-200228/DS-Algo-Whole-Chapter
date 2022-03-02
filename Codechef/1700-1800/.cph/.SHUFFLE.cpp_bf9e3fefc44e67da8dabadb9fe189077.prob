@@ -1,1 +1,0 @@
-{"name":"Local: SHUFFLE","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\1700-1800\\SHUFFLE.cpp","tests":[{"id":1646226250788,"input":"2\n4 1\n1 4 2 3\n4 2\n1 4 2 3\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\1700-1800\\SHUFFLE.cpp","group":"local","local":true}
