@@ -48,9 +48,26 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
-
-    
+    ll n;cin>>n;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
+    vector<ll> lngOfZeros;
+    for(ll i=0;i<n;i++){
+        if(v[i]==0){
+            ll j = i+1;
+            while(v[j]!=1){
+                j++;
+            }
+            lngOfZeros.push_back(j-i);
+            i = j;
+        }   
+    }
+    for(auto i:lngOfZeros){
+        if(i%2 == 0){
+            
+        }
 }
  
 int main()

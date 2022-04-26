@@ -1,0 +1,1 @@
+{"name":"Local: l","url":"d:\\C++\\DS-Algo-Whole-Chapter\\l.cpp","tests":[{"id":1650712360928,"input":"8\naaaabbb\nbbaaaaabbb\naaaaaa\nabab\na\nba\naaba\naabbaa","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\l.cpp","group":"local","local":true}

@@ -48,7 +48,8 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
+    ll l;cin>>l;
+    ll r;cin>>r;
 
     
 }

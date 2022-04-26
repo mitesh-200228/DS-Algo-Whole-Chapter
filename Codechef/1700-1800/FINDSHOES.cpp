@@ -48,9 +48,17 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
-
-    
+    ll n;cin>>n;
+    ll m;cin>>m;
+    if(m == 0){
+        cout<<2*n<<endl;
+    }else if(n>m){
+        cout<<m+(2*(n-m))<<endl;
+    }else if(n<m){
+        cout<<n<<endl;
+    }else{
+        cout<<m<<endl;
+    }
 }
  
 int main()

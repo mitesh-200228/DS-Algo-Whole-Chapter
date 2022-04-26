@@ -48,9 +48,13 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
-
-    
+    ll n;cin>>n;
+    ll m,k;cin>>m>>k;
+    if(m-k>=n){
+        cout<<"Yes"<<endl;
+    }else{
+        cout<<"No"<<endl;
+    }
 }
  
 int main()

@@ -48,9 +48,10 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
+    ll x,y;
+    cin>>x>>y;
 
-    
+    cout<<abs(y-x)<<endl;
 }
  
 int main()

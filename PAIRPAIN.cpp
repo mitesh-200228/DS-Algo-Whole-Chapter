@@ -48,9 +48,53 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
-
-    
+    ll n;cin>>n;
+    vector<ll> v(n);
+    ll one = 0;
+    ll two = 0;
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+        if(v[i] == 1) one++;
+        else if(v[i] == 2) two++;
+    }
+    ll ans = 0;
+    vector<ll> twos(n,-1);
+    vector<ll> ones(n,0);
+    ll first = 0;
+    if(v[n-1] == 2){
+        twos[n-1] = 0;
+    }
+    for(ll i=n-2;i>=0;i--){
+        if(v[i] < 3){
+            twos[i] = twos[i+1] + 1;
+        }else{
+            twos[i] = twos[i+1];
+        }
+    }
+    if(v[n-1] == 1){
+        ones[n-1] = 1;
+    }
+    for(ll i=n-2;i>=0;i--){
+        if(v[i] == 1){
+            ones[i] = ones[i+1] + 1;
+        }else{
+            ones[i] = ones[i+1];
+        }
+    }
+    for(auto i:ones){
+        cout<<i<<" ";
+    }cout<<endl;
+    for(ll i=0;i<n;i++){
+        if(v[i] == 1){
+            ans += (n-i-1);
+        }   
+        else if(v[i] == 2){
+            ans += twos[i];
+        }else{
+            ans += ones[i];
+        }
+    }
+    cout<<ans<<endl;
 }
  
 int main()

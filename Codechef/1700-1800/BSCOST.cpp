@@ -48,9 +48,31 @@ ll gcd(ll a, string b){
 }
  
 void solve(){
-    ll x;cin>>x;
+    ll n,x,y;
+    cin>>n>>x>>y;
 
-    
+    string s;cin>>s;
+
+    ll one = 0;
+    ll zero = 0;
+
+    for(ll i=0;i<n;i++){
+        if(s[i]=='1'){
+            one++;
+        }else{
+            zero++;
+        }
+    }
+    // cout<<zero<<" "<<one<<endl;
+    if(one == n || zero == n){
+        cout<<"0"<<endl;
+        return;
+    }
+    else{
+        cout<<min(x,y)<<endl;
+    }
+    // cout<<ans1<<" "<<ans2<<endl;
+    // cout<<ans1*x + ans2*y<<endl;
 }
  
 int main()

@@ -1,1 +1,0 @@
-{"name":"Local: string","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Dynamic Programming\\string.cpp","tests":[{"id":1643816853949,"input":"5\n3\nabc\n8\nabccccdd\n4\nxyyx\n6\nppppqr\n8\nabeeeert","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Dynamic Programming\\string.cpp","group":"local","local":true}
