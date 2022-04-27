@@ -48,37 +48,38 @@ void solve()
 {
     ll n;
     cin >> n;
-    vector<ll> v(n);
+    vector<ll> nums(n);
     for (ll i = 0; i < n; i++)
     {
-        cin >> v[i];
+        cin >> nums[i];
     }
-    ll target;cin>>target;
+    ll target;
+    cin >> target;
     int high = nums.size() - 1;
     int low = 0;
-    int index = low + (high - low) / 2;
+    int mid = low + (high - low) / 2;
 
     while (low <= high)
     {
-        index = low + (high - low) / 2;
-        if (nums[index] == target)
-            return index;
-        if (nums[low] <= nums[index])
+        mid = low + (high - low) / 2;
+        if (nums[mid] == target)
+            return mid;
+        if (nums[low] <= nums[mid])
         {
-            if (target <= nums[index] && target >= nums[low])
-                high = index - 1;
+            if (target <= nums[mid] && target >= nums[low])
+                high = mid - 1;
             else
-                low = index + 1;
+                low = mid + 1;
         }
         else
         {
-            if (target >= nums[index] && target <= nums[high])
-                low = index + 1;
+            if (target >= nums[mid] && target <= nums[high])
+                low = mid + 1;
             else
-                high = index - 1;
+                high = mid - 1;
         }
     }
-    return -1;
+    return;
 }
 
 int main()
