@@ -47,54 +47,11 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-ll binary_search_for_left(std::vector<ll> v,ll l,ll n){
-    ll i = 0;
-    ll j = n;
-    ll mid = i + (j-i)/2;
-    while(i<j){
-        if(v[mid] == l){
-            i = mid + 1;
-        }else if(v[mid] < l){
-            i = mid + 1;
-        }else{
-            j = mid - 1;
-        }
-        mid = i + (j-i)/2;
-    }
-    return mid;
-}
-
-ll binary_search_for_right(std::vector<ll> v,ll l,ll n){
-    ll i = 0;
-    ll j = n;
-    ll mid = i + (j-i)/2;
-    while(i<j){
-        // cout<<mid<<" -- "<<endl;
-        if(v[mid] == l){
-            j = mid - 1;
-        }else if(v[mid] < l){
-            i = mid + 1;
-        }else{
-            j = mid - 1;
-        }
-        mid = i + (j-i)/2;
-    }
-    return mid;
-}
-
 void solve(){
     ll n;cin>>n;
-    std::vector<ll> v(n);
+    vector<ll> v(n);
     for(ll i=0;i<n;i++){
-        cin>>v[i];   
-    }
-    ll k;cin>>k;
-    std::sort(v.begin(),v.end());
-    while(k--){
-        ll l,r;cin>>l>>r;
-        ll x = binary_search_for_left(v,l,n);
-        ll y = binary_search_for_right(v,r,n);
-        cout<<x<<" "<<y<<endl;
+        cin>>v[i];
     }
 }
  
