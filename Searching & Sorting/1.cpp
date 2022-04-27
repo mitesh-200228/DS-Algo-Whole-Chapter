@@ -39,7 +39,25 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
 
-int first(vector<ll> &v,ll l,ll h,ll x,ll n){
+int second(vector<ll> v,ll l,ll h,ll x,ll n){
+    while(l<=h){
+        ll mid = (l) + (h-l)/2;
+        if((mid == 0 || x > v[mid-1]) && v[mid] == x){
+            while(x == v[mid+1]){
+                mid++;
+            }
+            // cout<<mid<<"---";
+            return mid;
+        }else if(v[mid]<x){
+            l=mid+1;
+        }else{
+            h=mid-1;
+        }
+    }
+    return -1;
+}
+
+int first(vector<ll> v,ll l,ll h,ll x,ll n){
     while(l<=h){
         ll mid = (l) + (h-l)/2;
         if((mid == 0 || x > v[mid-1]) && v[mid] == x){
@@ -50,6 +68,7 @@ int first(vector<ll> &v,ll l,ll h,ll x,ll n){
             h=mid-1;
         }
     }
+    return -1;
 }
 
 void solve(){
@@ -59,8 +78,8 @@ void solve(){
     for(ll i=0;i<n;i++){
         cin>>v[i];
     }
-
-    cout<<first(v,0,n-1,x,n);
+    cout<<first(v,0,n-1,x,n)<<" ";
+    cout<<second(v,0,n-1,x,n);
 }
  
 int main()

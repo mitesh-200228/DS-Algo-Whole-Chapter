@@ -1,3 +1,4 @@
+// Find All Subarrays with sum equal to k in optimised way
 #include<unordered_set>
 #include<stack>
 #include<iostream>
@@ -53,6 +54,7 @@ void solve(){
     for(ll i=0;i<n;i++){
         cin>>v[i];
     }
+    
 }
  
 int main()
