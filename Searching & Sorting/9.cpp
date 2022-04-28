@@ -38,6 +38,7 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
+
 void solve(){
     int n;cin>>n;
     int k,x;
@@ -47,17 +48,15 @@ void solve(){
         cin>>v[i];
     }
 
-    int j = 0;
-    int ans = -1;
-    while(j<n){
-        if(v[j] == x){
-            ans = j;
+    ll i = 0;
+    while(i<n){
+        if(x == v[i]){
+            cout<<x<<endl;
             break;
-        }   
-        int op = max(1,abs(v[j]-x)/k); 
-        j+=op;
+        }
+        i += max(1,abs((v[i]-x)/k))
     }
-    cout<<ans+1<<endl;
+    
 }
  
 int main()
