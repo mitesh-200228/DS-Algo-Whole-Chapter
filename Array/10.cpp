@@ -47,34 +47,43 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-void solve(){
-    ll n;cin>>n;
-    std::vector<ll> v(n);
-    ll ans = INT_MIN;
-    ll ans1 = INT_MAX;
+void print(vector<ll> v,ll n){
     for(ll i=0;i<n;i++){
-        cin>>v[i];   
+        cout<<v[i]<<' ';
+    }cout<<endl;
+}
+
+void minJumps(std::vector<ll> v,ll n){
+    if(v[0]==0){
+        cout<<"-1"<<endl;
+        return;
     }
-    for(ll i=0;i<n;i++){
-        ans = max(ans,v[i]);
-        ans1 = min(ans1,v[i]);
-    }
-    ll store;
-    ll store1;
-    for(ll i=0;i<n;i++){
-        if(ans == v[i]){
-            store = i;
-        }   
-        if(ans1 == v[i]){
-            store1 = i;
+    ll maxR = v[0];
+    ll jumps = 0;
+    ll steps = 0;
+    ll x = 0;
+    for(ll i=0;i<n-1;i++){
+        maxR = max(maxR,v[i]+i);
+        if(i == x){
+            steps++;
+            x = maxR;
+            maxR = 0;
         }
     }
-    // cout<<store<<" "<<store1<<endl;
-    if(store < store1) {
-        cout<<"YES"<<endl;
+    if(x < n - 1){
+        cout<<"-1"<<endl;
     }else{
-        cout<<"NO"<<endl;
+        cout<<steps<<endl;
     }
+}
+
+void solve(){
+    ll n;cin>>n;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
+    minJumps(v,n);
 }
  
 int main()
