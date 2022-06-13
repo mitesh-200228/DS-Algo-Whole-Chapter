@@ -1,0 +1,1 @@
+{"name":"Local: 3","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Graphs\\3.cpp","tests":[{"id":1655067346789,"input":"4 5\n1 2\n2 3\n3 4\n4 1\n3 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Graphs\\3.cpp","group":"local","local":true}
