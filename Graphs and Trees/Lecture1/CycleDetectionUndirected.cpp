@@ -41,7 +41,7 @@ int main()
     
     ll n,m;cin>>n>>m;
     std::vector<vector<ll>> adj(n);
-    for(ll i=0; i<n ;i++){
+    for(ll i=0; i<m ;i++){
         ll a,b;
         cin>>a>>b;
         adj[a].push_back(b);
@@ -49,7 +49,7 @@ int main()
     }   
     bool cycle = false;
     vector<bool> visited(n,false);
-    for(ll i=0; i<n ;i++){
+    for(ll i=0; i<m ;i++){
         if(!visited[i] && iscycle(i,adj,visited,-1)){
             cycle = true;
         }   
