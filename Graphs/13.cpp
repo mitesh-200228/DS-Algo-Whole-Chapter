@@ -1,53 +1,55 @@
-#include <iostream>
-#include <limits.h>
-#define V 9
+#include <bits/stdc++.h>
+#define ll long long int
 using namespace std;
+const ll N = 1e5 + 2, MOD = 1e9 + 7;
 
-int minDistance(int dist[], bool sptSet[]){
-	int min = INT_MAX, min_index;
-	for (int v = 0; v < V; v++)
-		if (sptSet[v] == false && dist[v] <= min)
-			min = dist[v], min_index = v;
-	return min_index;
-}
+bool vis[N];
+std::vector<ll> adj[N];
 
-void printSolution(int dist[]){
-	cout <<"Vertex \t Distance from Source" << endl;
-	for (int i = 0; i < V; i++)
-		cout << i << " \t\t"<<dist[i]<< endl;
-}
-
-void dijkstra(int graph[V][V], int src)
+void dfs(ll ptr)
 {
-	int dist[V];
-	bool sptSet[V];
-	for (int i = 0; i < V; i++)
-		dist[i] = INT_MAX, sptSet[i] = false;
-	dist[src] = 0;
-
-	for (int count = 0; count < V - 1; count++) {
-		int u = minDistance(dist, sptSet);
-		sptSet[u] = true;
-		for (int v = 0; v < V; v++)
-			if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
-				&& dist[u] + graph[u][v] < dist[v])
-				dist[v] = dist[u] + graph[u][v];
-	}
-	printSolution(dist);
+    vis[ptr] = true;
+    cout << ptr << "->";
+    for (auto it : adj[ptr])
+    {
+        if (!vis[it])
+            dfs(it);
+    }
 }
-
-int main(){
-	int graph[V][V] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-						{ 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-						{ 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-						{ 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-						{ 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-						{ 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-						{ 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-						{ 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-						{ 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-
-	dijkstra(graph, 0);
-
-	return 0;
+int main()
+{
+    for (ll i = 0; i < N; i++){
+        vis[i] = false;
+    }
+    ll n;
+    cin >> n;
+    ll m;
+    cin >> m;
+    vector<ll> inDegree(n,0);
+    for (ll i = 0; i < m; i++){
+        ll x, y;
+        cin >> x >> y;
+        adj[x].push_back(y);
+        inDegree[y]++;
+    }
+    queue<ll> pq;
+    for(ll i=0;i<n;i++){
+        if(inDegree[i] == 0){
+            pq.push(i);
+        }   
+    }
+    ll cnt = 0;
+    while(!pq.empty()){
+        cnt++;
+        ll x = pq.front();
+        pq.pop();
+        cout<<x<<" ";
+        for(auto it:adj[x]){
+            inDegree[it]--;
+            if(inDegree[it] == 0){
+                pq.push(it);
+            }
+        }
+    }
+    return 0;
 }
