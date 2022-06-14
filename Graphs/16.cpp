@@ -66,11 +66,11 @@ bool isSafe(vector<vector<ll>> v,ll i,ll j,vector<vector<ll>> &visited){
 
 void FindNumberOfIslands(vector<vector<ll>> v,ll i,ll j){
     visited[i][j] = 1;
-    ll x[] = {-1,-1,0,1,1,1,0,-1};
-    ll y[] = {0,1,1,1,0,-1,-1,-1};
+    ll x[] = {0,0,1,-1,-1,-1,1,1};
+    ll y[] = {-1,1,0,0,-1,1,-1,1};
     for(ll k=0;k<8;k++){
        ll nx = i + x[k];
-       ll ny = i + y[k];
+       ll ny = j + y[k];
        if(isSafe(v,nx,ny,visited) && !visited[nx][ny] && v[nx][ny]){
         FindNumberOfIslands(v,nx,ny);
        } 
