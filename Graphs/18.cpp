@@ -1,106 +1,63 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#define ll int long long
 using namespace std;
+const ll N = 1e5+6;
 
-class DSU {
-	int* parent;
-	int* rank;
+std::vector<ll> parent(N);
+std::vector<ll> sz(N);
 
-public:
-	DSU(int n)
-	{
-		parent = new int[n];
-		rank = new int[n];
+void make_set(ll v){
+	parent[v] = v;
+	sz[v] = 1;
+}
 
-		for (int i = 0; i < n; i++) {
-			parent[i] = -1;
-			rank[i] = 1;
+ll find_set(ll v){
+	if(v == parent[v]){
+		return v;
+	}
+	return parent[v] = find_set(parent[v]);
+}
+
+void union_sets(ll a,ll b){
+	a = find_set(a);
+	b = find_set(b);
+	if(a!=b){
+		if(sz[a]<sz[b]){
+			swap(a,b);
+		}
+		parent[b] = a;
+		sz[a] += sz[b];
+	}
+}
+
+int32_t main(){
+	for(ll i=0;i<N;i++){
+		make_set(i);
+	}
+	int n,m;
+	cin>>n>>m;
+	vector<vector<ll>> graph;
+	for(ll i=0;i<m;i++){
+		ll u,v,w;
+		cin>>u>>v>>w;
+		graph.push_back({w,u,v});
+	}
+	sort(graph.begin(),graph.end());
+	ll cost = 0;
+	for(auto it:graph){
+		ll w = it[0];
+		ll u = it[1];
+		ll v = it[2]; 
+		ll x = find_set(u);
+		ll y = find_set(v);
+		if(x == y){
+			continue;
+		}else{
+			cout<<u<<" "<<v<<endl;
+			cost += w;
+			union_sets(u,v);
 		}
 	}
-    
-	int find(int i)
-	{
-		if (parent[i] == -1)
-			return i;
-
-		return parent[i] = find(parent[i]);
-	}
-	// union function
-	void unite(int x, int y)
-	{
-		int s1 = find(x);
-		int s2 = find(y);
-
-		if (s1 != s2) {
-			if (rank[s1] < rank[s2]) {
-				parent[s1] = s2;
-				rank[s2] += rank[s1];
-			}
-			else {
-				parent[s2] = s1;
-				rank[s1] += rank[s2];
-			}
-		}
-	}
-};
-
-class Graph {
-	vector<vector<int> > edgelist;
-	int V;
-
-public:
-	Graph(int V) { this->V = V; }
-
-	void addEdge(int x, int y, int w)
-	{
-		edgelist.push_back({ w, x, y });
-	}
-
-	void kruskals_mst()
-	{
-		// 1. Sort all edges
-		sort(edgelist.begin(), edgelist.end());
-
-		// Initialize the DSU
-		DSU s(V);
-		int ans = 0;
-		cout << "Following are the edges in the "
-				"constructed MST"
-			<< endl;
-		for (auto edge : edgelist) {
-			int w = edge[0];
-			int x = edge[1];
-			int y = edge[2];
-
-			// take that edge in MST if it does form a cycle
-			if (s.find(x) != s.find(y)) {
-				s.unite(x, y);
-				ans += w;
-				cout << x << " -- " << y << " == " << w
-					<< endl;
-			}
-		}
-		cout << "Minimum Cost Spanning Tree: " << ans;
-	}
-};
-int main(){
-	Graph g(4);
-	g.addEdge(0, 1, 10);
-	g.addEdge(1, 3, 15);
-	g.addEdge(2, 3, 4);
-	g.addEdge(2, 0, 6);
-	g.addEdge(0, 3, 5);
-
-	// int n, m;
-	// cin >> n >> m;
-
-	// Graph g(n);
-	// for (int i = 0; i < m; i++)
-	// {
-	//	 int x, y, w;
-	//	 cin >> x >> y >> w;
-	//	 g.addEdge(x, y, w);
-	// }
-
-	g.kruskals_mst();
+	cout<<cost<<endl;
 	return 0;
 }
