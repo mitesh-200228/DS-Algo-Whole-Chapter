@@ -1,1 +1,0 @@
-{"name":"Local: Group Anagrams","url":"d:\\C++\\DS-Algo-Whole-Chapter\\leetcode\\Group Anagrams.cpp","tests":[{"id":1655402775728,"input":"1 6\neat tea tan ate nat bat","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\leetcode\\Group Anagrams.cpp","group":"local","local":true}
