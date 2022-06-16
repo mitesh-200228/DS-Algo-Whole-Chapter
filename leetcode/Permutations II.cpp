@@ -53,21 +53,26 @@ void print(vector<ll> v,ll n){
     }cout<<endl;
 }
 
-void Permutation2(std::vector<ll> v,ll n,string t){
-    if(n == 1){
-        return;
+void Permutation2(std::vector<ll> v,ll n,ll i,std::vector<std::vector<ll>> &answer){
+    if(n-1 == i){
+        answer.push_back(v);
+    }else{
+        for(ll j=i;j<n;j++){
+            if(i!=j && v[i]==v[j]) continue;
+            swap(v[i],v[j]);
+            Permutation2(v,n,1+i,answer);
+        }
     }
 }
 
 void solve(){
     ll n;cin>>n;
     vector<ll> v(n);
-    strint t = "";
     for(ll i=0;i<n;i++){
         cin>>v[i];
-        t += to_string(v[i]);
     }
-    Permutation2(v,n,t);
+    vector<vector<ll>> answer;
+    Permutation2(v,n,0,answer);
 }
  
 int main()
