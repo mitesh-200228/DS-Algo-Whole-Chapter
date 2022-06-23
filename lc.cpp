@@ -65,12 +65,40 @@ void print(vector<ll> v, ll n)
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> v(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> v[i];
+    ll n;cin>>n;
+    string s;cin>>s;
+    ll l = 0;
+    ll count = 0;
+    if(n%2 == 0){
+        for(ll i=0;i<n;i++){
+            if(s[i]==')' && i<n/2){
+                count++;
+            }   
+            if(s[i]=='(' && i>=n/2){
+                count++;
+            }
+        }
+        if((n-count)%2){
+            cout<<count+1<<endl;
+        }else{
+            cout<<count<<endl;
+        }
+    }else{
+        ll count1 = 0;
+        ll count2 = 0;
+        for(ll i=0;i<n;i++){
+            if(s[i]==')' && i<n/2){
+                count1++;
+            }   
+            if(s[i]=='(' && i>n/2){
+                count2++;
+            }
+        }
+        if(count1>count2){
+            if(s[n/2] == '')
+        }
+        if(s[n/2] == ')') count++;
+        cout<<count<<endl;
     }
 }
 
@@ -84,15 +112,7 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n1, m1, n2, m2;
-        cin >> n1 >> m1;
-        cin >> n2 >> m2;
-        if ((m2 + m1) % (n1 + n2) == 0)
-        {
-            cout << "YES" << endl;
-        }
-        else
-            cout << "NO" << endl;
+        solve();
     }
     return 0;
 }

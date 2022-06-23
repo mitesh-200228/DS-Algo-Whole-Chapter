@@ -1,81 +1,55 @@
-#include<unordered_set>
-#include<stack>
-#include<iostream>
-#include<vector>
-#include<string>
-#include<numeric>
-#include<algorithm>
-#include<queue>
-#include <stdio.h>
-#include<stack>
-#include<map>
-#include<unordered_map>
-#include<set>
-#include<climits>
-#include<cmath>
-#include<math.h>
-#include<limits>
-#define ll long long int
-const ll N = 1e5+ 2,MOD = 1e9+7;
+#include <iostream>
+#include <bits/stdc++.h>
+#define ll int long long
 using namespace std;
-int power(ll a,ll b) {
-    ll ans = 1;
-    while(b>0){
-        if(b%2){
-            ans=ans*a;
+
+int main() {
+	// your code goes here
+	ll t;
+	cin>>t;
+	while(t--){
+	    ll C;
+	    cin>>C;
+	    ll A=0,B=0;
+        ll val = 0;
+        ll dumm = C;
+        while(dumm){
+            val++;
+            dumm /= 2;
         }
-        a=a*a;b>>=1;
-    }
-    return ans;
-}
-ll countSetBits(ll n) {
-    ll count = 0;
-    while (n)
-    {
-        count += n & 1;
-        n >>= 1;
-    }
-    return count;
-}
- 
-ll gcd(ll a, string b){
-    ll res = 0;
-    for (int i = 0; i < b.length(); i++){
-        res = ((res * 10) + (b[i] - '0')) % a;
-    }
-    return __gcd(a,res);
-}
- 
-void solve(){
-    ll m,x;
-    cin>>m>>x;
-    m-=1;
-    std::vector<ll> dp(x);
-    dp[0] = 1;
-    for(ll i=1;i<x;i++){
-        ll j = (m%(i+1)) + 1;
-        if(dp[i-1]<j){
-            dp[i] = dp[i-1];
-        }else{
-            dp[i] = dp[i-1]+1;
+        // cout<<val<<" --";
+	    ll d = ceil(log2(C));
+	    bool changer = true;
+	    for(ll i=0;i<val;i++){
+	        if((1<<i)&C){
+	            if(changer){
+	                B = B|(1<<i);
+	                changer = false;
+	            }else{
+	                A = A|(1<<i);
+	                changer = true;
+	            }
+	        }else{
+	            if((A|(1<<i)) < pow(2,d) && (B|(1<<i)) < pow(2,d)){
+	                A = (A|(1<<i));
+	                B = B|(1<<i);
+	            }else{
+	                break;
+	            }
+	        }
+	    }
+        if(A>B){
+            if(((1<<0)&A) && !((1<<0)&B)){
+                A = A - 1;
+                B = B + 1;
+            }
+        }else if(B>A){
+            if(((1<<0)&B) && !((1<<0)&A)){
+                B = B - 1;
+                A = A + 1;
+            }
         }
-    }
-    for(ll i=0;i<x;i++){
-        cout<<dp[i]<<" ";  
-    }cout<<endl;
-}
- 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
- 
-    ll t;
-    cin>>t;
-    while(t--)
-    {
-        solve();
-    }
-    return 0;
+	    cout<<A<<" "<<B<<endl;
+	}
+	return 0;
 }

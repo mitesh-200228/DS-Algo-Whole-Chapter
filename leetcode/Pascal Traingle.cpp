@@ -4,10 +4,11 @@
 #include<vector>
 #include<string>
 #include<numeric>
+#include<cstring>
 #include<algorithm>
 #include<queue>
+#include <stdio.h>
 #include<stack>
-#include<cstring>
 #include<map>
 #include<unordered_map>
 #include<set>
@@ -45,35 +46,39 @@ ll gcd(ll a, string b){
     }
     return __gcd(a,res);
 }
-
-ll dp[10001][10001];
-
+ 
+void print(vector<ll> v,ll n){
+    for(ll i=0;i<n;i++){
+        cout<<v[i]<<' ';
+    }cout<<endl;
+}
+ 
 void solve(){
     ll n;cin>>n;
-    std::vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-    }
-    
-    for(ll i=1;i<n;i++){
-        dp[i][i] = 0;
-    }   
-
-    for(ll l=2;l<n;l++){
-        for(ll i=1;i<n-l+1;i++){
-            ll j = i+l-1;
-            dp[i][j] = MOD;
-            for(ll k=i;k<j;k++){
-                dp[i][j] = min(dp[i][j],dp[i][k] + dp[k+1][j] + v[i-1]*v[k]*v[j]);
-            }   
+    std::vector<std::vector<ll>> dp(n+1);
+    if(n == 0){
+        cout<<dp[1][1];
+        return;
+    }else if(n == 1){
+        cout<<dp[2][0]<<" "<<dp[2][1]<<endl;
+        return;
+    }else{
+        for(ll i=2;i<=n;i++){
+            for(ll j=1;j<n+1;j++){
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
+            }
+        }   
+        for(auto it:dp){
+            for(auto i:it){
+                cout<<i<<" ";
+            }cout<<endl;
         }
-    }                                                                                  
-    cout<<dp[1][n-1];
+    }
+
 }
  
 int main()
 {
-    std::memset(dp,-1,sizeof dp);
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
