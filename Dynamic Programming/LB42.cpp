@@ -54,15 +54,26 @@ void print(vector<ll> v,ll n){
 }
  
 void solve(){
-    ll n;cin>>n;
-    vector<ll> v(n);
-    ll middleOne = 0;
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-        middleOne += v[i];
+    string s;
+    cin>>s;
+    ll n = s.length();
+    ll dp[n][n];
+    for(ll i=n-1;i>=0;i--){
+        for(ll j=0;j<n;j++){
+            if(i>j){
+                dp[i][j] = 0;
+            }else if(i==j){
+                dp[i][j] = 1;
+            }else{
+                if(s[i]==s[j]){
+                    dp[i][j] = (dp[i+1][j] + dp[i][j-1])%MOD;
+                }else{
+                    dp[i][j] = (dp[i+1][j] + dp[i][j-1] - dp[i+1][j-1] + MOD)%MOD;
+                }
+            }
+        }   
     }
-    if(middleOne%2) cout<<"NO"<<endl;
-    else cout<<"YES"<<endl;
+    cout<<dp[0][n-1]<<endl;
 }
  
 int main()

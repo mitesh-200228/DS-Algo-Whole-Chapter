@@ -52,17 +52,31 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
-void solve(){
-    ll n;cin>>n;
-    vector<ll> v(n);
-    ll middleOne = 0;
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-        middleOne += v[i];
+
+int dp[1001][1001];
+
+ll lps(string &s1,string &s2,ll n1,ll n2){
+    if(n1==0 || n2==0){
+        return 0;
     }
-    if(middleOne%2) cout<<"NO"<<endl;
-    else cout<<"YES"<<endl;
+    if(dp[n1][n2]!=-1){
+        return dp[n1][n2];
+    }
+    if(s1[n1-1]==s2[n2-1]){
+        return dp[n1][n2] = 1 + lps(s1,s2,n1-1,n2-1);
+    }else{
+        return dp[n1][n2] = max(lps(s1,s2,n1-1,n2),lps(s1,s2,n1,n2-1));
+    }
+}
+
+void solve(){
+    string s1;cin>>s1;
+    string s2 = s1;
+    std::reverse(s2.begin(),s2.end());
+    ll n = s1.length();
+    dp[n][n];
+    memset(dp, -1, sizeof(dp));
+    cout<<lps(s2,s1,n,n);
 }
  
 int main()

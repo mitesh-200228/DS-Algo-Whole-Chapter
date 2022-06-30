@@ -55,14 +55,32 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
-    ll middleOne = 0;
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-        middleOne += v[i];
+    ll a,b;
+    cin>>a>>b;
+    ll x = 0;
+    ll p = -1;
+    for(ll i=n-1;i>=0;i--){
+        if(((1<<i)&b)>0 && ((1<<i)&a)>0){
+            continue;
+        }else if(((1<<i)&b)==0 && ((1<<i)&a)==0){
+            x |= (1<<i);
+        }else{
+            if(p!=-1){
+                if(((1<<i)&b)>0 && ((1<<i)&a)==0){
+                    x |= (1<<i);
+                }
+            }else{
+                if(((1<<i)&b)>0 && ((1<<i)&a)==0){
+                    p=0;
+                }
+                else{
+                    p=0;
+                    x|=(1<<i);
+                }
+            }
+        }
     }
-    if(middleOne%2) cout<<"NO"<<endl;
-    else cout<<"YES"<<endl;
+    cout<<x<<endl;
 }
  
 int main()

@@ -55,10 +55,35 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
+    ll sum = 0;
     vector<ll> v(n);
     for(ll i=0;i<n;i++){
         cin>>v[i];
+        sum += v[i];
     }
+    if(sum%2){
+        cout<<"NO"<<endl;
+        return;
+    } 
+    else sum/=2;
+    std::vector<std::vector<bool>> dp(n+1,std::vector<bool> (sum+1,false));
+    for(ll i=0;i<=n;i++){
+        dp[i][0] = true;
+    }
+    for(ll i=0;i<=sum;i++){
+        dp[0][i] = false;
+    }
+    for(ll i=1;i<=n;i++){
+        for(ll j=1;j<=sum;j++){
+            if(v[i-1]<=j){
+                dp[i][j] = dp[i-1][j-v[i-1]] || dp[i-1][j];
+            }else{
+                dp[i][j] = dp[i-1][j];
+            }
+        }  
+    }
+    cout<<dp[n][sum]<<endl;
+    // cout<<solve1(dp,v,sum,n-1);
 }
  
 int main()
