@@ -46,16 +46,16 @@ void solve(){
     for(ll i=0;i<n;i++){
         cin>>v[i];
     }
-    for(ll i=0; i<n ;i++){
-        for(ll j=i+1;j<n;j++){
-            ll l = j+1;
+    for(ll i=0;i<n;i++){
+        for(ll j=1+i;j<n;j++){
+            ll l = 1+j;
             ll r = n-1;
             while(l<r){
-                if(v[i] + v[j] + v[l] + v[r] == k){
+                if(i!=j && (v[i] + v[j] + v[l] + v[r] == k)){
                     cout<<v[i]<<" "<<v[j]<<" "<<v[l]<<" "<<v[r]<<endl;
                     l++;
                     r--;
-                }else if(v[i] + v[j] + v[l] + v[r] < k){
+                }else if(v[i] + v[l] + v[j] + v[r] < k){
                     l++;
                 }else{
                     r--;

@@ -45,22 +45,26 @@ void solve(){
     for(ll i=0;i<n;i++){
         cin>>v[i];
     }
-    unordered_map<ll,ll> m;
+    unordered_map<ll,vector<ll>> m;
+    vector<pair<ll,ll>> out;
     ll cnt = 0;
     ll sum = 0;
     for(ll i=0; i<n ;i++){
         sum += v[i];
         if(sum == 0){
-            cnt++;
+            out.push_back(make_pair(0,i));
         }
 
         if(m.find(sum) != m.end()){
-            cnt+=m[sum];
-            cout<<cnt<<" ";
-        }else{
-            cout<<"-- ";
+            vector<ll> vc = m[sum];
+            for(auto it=vc.begin();it!=vc.end();it++){
+                out.push_back(make_pair(1 + *it,i));
+            }
         }
-        m[sum]++;
+        m[sum].push_back(i);
+    }
+    for(auto it:out){
+        cout<<it.first<<" "<<it.second<<endl;
     }
 }
  

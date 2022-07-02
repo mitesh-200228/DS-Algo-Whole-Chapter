@@ -61,7 +61,7 @@ void solve(){
             l++;
         }
     }
-
+    cout<<ok<<endl;
 }
  
 int main()
