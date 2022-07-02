@@ -1,71 +1,74 @@
-#include<unordered_set>
-#include<stack>
-#include<iostream>
-#include<vector>
-#include<string>
-#include<numeric>
-#include<cstring>
-#include<algorithm>
-#include<queue>
-#include <stdio.h>
-#include<stack>
-#include<map>
-#include<unordered_map>
-#include<set>
-#include<climits>
-#include<cmath>
-#include<math.h>
-#include<limits>
-#define ll long long int
-const ll N = 1e5+ 2,MOD = 1e9+7;
+#include <bits/stdc++.h>
 using namespace std;
-int power(ll a,ll b) {
-    ll ans = 1;
-    while(b>0){
-        if(b%2){
-            ans=ans*a;
-        }
-        a=a*a;b>>=1;
-    }
-    return ans;
-}
-ll countSetBits(ll n) {
-    ll count = 0;
-    while (n)
+#define sq(x) ((x) * (x))
+#define EPS 1e-6
+#define N 5
+
+struct point
+{
+    int x, y;
+    point() {}
+    point(int x, int y)
+        : x(x), y(y)
+    {}
+};
+
+struct line
+{
+    int a, b, c;
+    line(int a, int b, int c)
+        : a(a), b(b), c(c)
     {
-        count += n & 1;
-        n >>= 1;
     }
-    return count;
+};
+
+double dist(double x, double y, point p)
+{
+    return sqrt(sq(x - p.x) + sq(y - p.y));
 }
- 
-ll gcd(ll a, string b){
-    ll res = 0;
-    for (int i = 0; i < b.length(); i++){
-        res = ((res * 10) + (b[i] - '0')) % a;
+
+double compute(point p[], int n, line l, double X)
+{
+    double res = 0;
+    double Y = -1 * (l.c + l.a * X) / l.b;
+    for (int i = 0; i < n; i++)
+        res += dist(X, Y, p[i]);
+
+    return res;
+}
+
+double findOptimumCostUtil(point p[], int n, line l)
+{
+    double low = -1e6;
+    double high = 1e6;
+    while ((high - low) > EPS)
+    {
+        double mid1 = low + (high - low) / 3;
+        double mid2 = high - (high - low) / 3;
+        double dist1 = compute(p, n, l, mid1);
+        double dist2 = compute(p, n, l, mid2);
+        if (dist1 < dist2)
+            high = mid2;
+        else
+            low = mid1;
     }
-    return __gcd(a,res);
+    return compute(p, n, l, (low + high) / 2);
 }
- 
-void solve(){
-    ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-    }
+
+double findOptimumCost(int points[N][2], line l)
+{
+    point p[N];
+    for (int i = 0; i < N; i++)
+        p[i] = point(points[i][0], points[i][1]);
+
+    return findOptimumCostUtil(p, N, l);
 }
- 
+
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
- 
-    ll t;
-    cin>>t;
-    while(t--)
-    {
-        solve();
-    }
+    line l(1, -1, -3);
+    int points[N][2] = {
+        {-3, -2}, {-1, 0}, {-1, 2}, {1, 2}, {3, 4}};
+    cout << findOptimumCost(points, l) << endl;
     return 0;
 }
