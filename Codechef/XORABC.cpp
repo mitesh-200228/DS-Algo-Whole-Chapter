@@ -54,25 +54,18 @@ void print(vector<ll> v,ll n){
 }
  
 void solve(){
-    string s;cin>>s;
-    ll one=0,zero=0;
-    ll n = s.length();
-    for(ll i=0;i<n;i++){
-        if(s[i]=='0'){
-            zero++;
-            continue;
-        }
-        one++;
-    }
-    if(n%2) {
-        cout<<-1<<endl;
-        return;
-    }
-    if(zero==n || one==n){
+    ll x;cin>>x;
+    if(x%2) {
         cout<<"-1"<<endl;
         return;
     }else{
-        cout<<n/2 - min(zero,one)<<endl;
+        ll a = 0;
+        for(ll i=0;i<32;i++){
+            if(((1<<i)&x) && ((x/2)!=(1<<i))){
+                cout<<x/2<<" 1 "<<(1<<i)<<endl;
+                break;
+            }
+        }
     }
 }
  
