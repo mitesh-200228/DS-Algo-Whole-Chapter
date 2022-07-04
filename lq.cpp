@@ -55,12 +55,8 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    if(!(n%3)){
-        cout<<0<<endl;
-    }else{
-            ll p = 1 + (n/3);
-    cout<<abs(p*3 - n)<<endl;
-    }
+    ll m;cin>>m;
+    cout<<(n^m)<<endl;
 }
  
 int main()

@@ -54,12 +54,16 @@ void print(vector<ll> v,ll n){
 }
  
 void solve(){
-    ll n;cin>>n;
-    if(!(n%3)){
+    ll x,m;
+    cin>>x>>m;
+    ll operations = ceil(log2(x)) + 1;
+    ll ans = 0;
+    if(operations>m){
         cout<<0<<endl;
     }else{
-            ll p = 1 + (n/3);
-    cout<<abs(p*3 - n)<<endl;
+        ++ans;
+        m -= operations;
+        cout<<ans*m + ans<<endl;
     }
 }
  

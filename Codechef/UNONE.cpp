@@ -52,15 +52,38 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
+
+string decToBinary(ll n){
+    ll i = 0;
+    string s = "";
+    while (n) {
+        s += n % 2;
+        n /= 2;
+        i++;
+    }
+    return s;
+}
+
 void solve(){
     ll n;cin>>n;
-    if(!(n%3)){
-        cout<<0<<endl;
-    }else{
-            ll p = 1 + (n/3);
-    cout<<abs(p*3 - n)<<endl;
+    vector<ll> v(n);
+    vector<ll> odd;
+    vector<ll> even;
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+        if(v[i]%2) odd.push_back(v[i]);
+        else even.push_back(v[i]);
     }
+    for(ll i=0;i<odd.size()/2;i++){
+        cout<<odd[i]<<" ";
+    }
+    for(ll i=0;i<even.size();i++){
+        cout<<even[i]<<" ";
+    }
+    for(ll i=odd.size()/2;i<odd.size();i++){
+        cout<<odd[i]<<" ";
+    }
+    cout<<endl;
 }
  
 int main()
