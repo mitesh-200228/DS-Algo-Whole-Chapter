@@ -4,8 +4,10 @@
 #include<vector>
 #include<string>
 #include<numeric>
+#include<cstring>
 #include<algorithm>
 #include<queue>
+#include <stdio.h>
 #include<stack>
 #include<map>
 #include<unordered_map>
@@ -45,35 +47,52 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-bool func(std::pair<ll,ll> p1,std::pair<ll,ll> p2){
-    return p1.second < p2.second;
+void print(vector<ll> v,ll n){
+    for(ll i=0;i<n;i++){
+        cout<<v[i]<<' ';
+    }cout<<endl;
 }
-
+ 
 void solve(){
     ll n;cin>>n;
-    std::vector<pair<ll,ll>> v(n);
-    std::vector<ll> start(n);
-    std::vector<ll> end(n);
+    vector<ll> v1(n);
+    ll sum1 = 0,sum2 = 0,sum3 = 0;
     for(ll i=0;i<n;i++){
-        cin>>start[i];
+        cin>>v1[i];
+        sum1 += v1[i];   
     }
-    for(ll i=0;i<n;i++){
-        cin>>end[i];   
+    ll m;cin>>m;
+    vector<ll> v2(m);
+    for(ll i=0;i<m;i++){
+        cin>>v2[i];
+        sum2 += v2[i];
     }
-    for(ll i=0;i<n;i++){
-        v[i].first = start[i];
-        v[i].second = end[i];
+    ll p;cin>>p;
+    vector<ll> v3(p);
+    for(ll i=0;i<p;i++){
+        cin>>v3[i];
+        sum3 += v3[i];
     }
-    std::sort(v.begin(),v.end(),func);
-    ll c = 1;
-    ll x = v[0].second;
-    for(ll i=1;i<n;i++){
-        if(v[i].first > x){
-            ++c;
-            x = v[i].second;
+    ll x=0,y=0,z=0;
+    while(x<n || y<m || z<p){
+        if(sum1 == sum2 && sum2 == sum3){
+            cout<<sum1<<endl;
+            return;
+        }
+        if(sum1>=sum2 && sum1>=sum3){
+            sum1 -= v1[x];
+            x++;
+        }
+        else if(sum2>=sum1 && sum2>=sum3){
+            sum2 -= v2[y];
+            y++;
+        }
+        else if(sum3>=sum1 && sum3>=sum2){
+            sum3 -= v3[z];
+            z++;
         }
     }
-    cout<<c<<endl;
+
 }
  
 int main()
