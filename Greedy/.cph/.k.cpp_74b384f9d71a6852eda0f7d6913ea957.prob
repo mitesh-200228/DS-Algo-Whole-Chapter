@@ -1,0 +1,1 @@
+{"name":"Local: k","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Greedy\\k.cpp","tests":[{"id":1657273086007,"input":"3\n1 1 1 1\n8 8 7 6\n8 8 8 6\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Greedy\\k.cpp","group":"local","local":true}

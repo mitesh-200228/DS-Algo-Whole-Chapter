@@ -55,8 +55,10 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    ll m;cin>>m;
-    cout<<(n^m)<<endl;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
 }
  
 int main()
