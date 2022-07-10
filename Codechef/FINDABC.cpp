@@ -58,7 +58,7 @@ void print(vector<ll> v, ll n)
 {
     for (ll i = 0; i < n; i++)
     {
-        cout << v[i] << ' ';
+        cout << v[i] << " ";
     }
     cout << endl;
 }
@@ -82,11 +82,11 @@ void solve()
     }
     else if ((v[1] - v[0]) == 1)
     {
-        twoodd = true;
+        twoeven = true;
     }
     else if ((v[1] - v[0]) == -1)
     {
-        twoeven = true;
+        twoodd = true;
     }
     else if ((v[1] - v[0]) == -3)
     {
@@ -94,12 +94,13 @@ void solve()
     }
     if (allodd || twoodd)
     {
-        for (ll i = 1; i <= v[0]; i += 2)
+        for (ll i = 1; i <= n; i += 2)
         {
-            for (ll j = i; j <= v[0]; j += 2)
+            for (ll j = i; j <= n; j += 2)
             {
-                if (((v[0] - i - j) + i + j == v[0]) && (v[0]-i-j)>=0 && (v[0]-i-j)<=n && i<=n && j<=n)
+                if (((v[0] - i - j) + i + j == v[0]) && (v[0] - i - j) >= 0 && (v[0] - i - j) <= n)
                 {
+                    // cout << i << " " << (1 ^ i) << " " << j << " " << (1 ^ j) << " " << v[0] - i - j << " " << (1 ^ (v[0] - i - j)) << endl;
                     if ((v[1] == ((1 ^ i) + (1 ^ j) + (1 ^ (v[0] - i - j)))))
                     {
                         if ((v[2] == ((2 ^ i) + (2 ^ j) + (2 ^ (v[0] - i - j)))))
@@ -114,14 +115,15 @@ void solve()
     }
     else if (twoeven || alleven)
     {
-        for (ll i = 0; i <= v[0]; i += 2)
+        for (ll i = 0; i <= n; i += 2)
         {
-            for (ll j = i; j <= v[0]; j += 2)
+            for (ll j = i; j <= n; j += 2)
             {
-                if (((v[0] - i - j) + i + j == v[0])  && (v[0]-i-j)>=0 && (v[0]-i-j)<=n && i<=n && j<=n)
+                if (((v[0] - i - j) + i + j == v[0]) && (v[0] - i - j) >= 0 && (v[0] - i - j) <= n)
                 {
                     if ((v[1] == (1 ^ i) + (1 ^ j) + (1 ^ (v[0] - i - j))))
                     {
+                        // cout << i << " " << (1 ^ i) << " " << j << " " << (1 ^ j) << " " << v[0] - i - j << " " << (1 ^ (v[0] - i - j)) << endl;
                         if ((v[2] == (2 ^ i) + (2 ^ j) + (2 ^ (v[0] - i - j))))
                         {
                             cout << i << " " << j << " " << v[0] - i - j << endl;
@@ -132,6 +134,7 @@ void solve()
             }
         }
     }
+    cout << endl;
 }
 
 int main()

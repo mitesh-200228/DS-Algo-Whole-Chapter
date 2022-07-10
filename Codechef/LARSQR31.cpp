@@ -55,10 +55,14 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
+    std::vector<std::pair<ll,ll>> v(n);
+    std::vector<vector<ll,ll>> 
     for(ll i=0;i<n;i++){
-        cin>>v[i];
+        ll a,b;
+        cin>>a>>b;
+        cin>>make_pair(a,b);
     }
+
 }
  
 int main()
