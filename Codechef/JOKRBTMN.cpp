@@ -14,13 +14,10 @@
 #include<set>
 #include<climits>
 #include<cmath>
-#include<bits/stdc++.h>
 #include<math.h>
 #include<limits>
 #define ll long long int
-#define ld long double
 const ll N = 1e5+ 2,MOD = 1e9+7;
-ll m;
 using namespace std;
 int power(ll a,ll b) {
     ll ans = 1;
@@ -55,50 +52,42 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
-
-ld dist(ll x1,ll y1,ld x2,ld y2){
-    ld ans = 0;
-    ans = sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
-    // cout<<ans<<endl;
-    return ans;
-}
-
+ 
 void solve(){
     ll n;cin>>n;
-    m = n;
-    ll a,b,c;cin>>a>>b>>c;
-    std::vector<std::pair<ll,ll>> coordinates;
-    ll q = n;
-    while(q--){
-        ll a,b;cin>>a>>b;
-        coordinates.push_back(make_pair(a,b));
+    ll m;cin>>m;
+    ll l;cin>>l;
+    std::unordered_map<ll,ll> mp;
+    ll p = 1;
+    while(m--){
+        ll x;cin>>x;
+        std::vector<ll> v(x);
+        for(ll i=0;i<x;i++){
+            cin>>v[i];   
+        }
+        for(ll i=0;i<x;i++){
+            mp[v[i]] = p;
+        }
+        ++p;
     }
-    ld l = -5000;
-    ld r = 5000;
-    while((r-l)>1e-8){
-        ld mid1 = l + (r-l)/3;
-        ld mid2 = r - (r-l)/3;
-        ld dist1=0,dist2=0;
-        for(ll i=0;i<n;i++){
-            dist1 += dist(coordinates[i].first,coordinates[i].second,mid1,-(c+a*mid1)/b);
-            dist2 += dist(coordinates[i].first,coordinates[i].second,mid2,-(c+a*mid2)/b);   
-        }
-        if(dist1>dist2){
-            l = mid1;
-        }
-        else if(dist2>dist1){
-            r = mid2;
-        }
-        else{
-            l = mid1;
-            r = mid2;
+    std::vector<ll> s(l);
+    for(ll i=0;i<l;i++){
+        cin>>s[i];
+    }
+    ll cnt = 1;
+    ll i = 0;
+    // for(auto it:mp){
+    //     cout<<it.first<<" "<<it.second<<endl;
+    // }
+    while(i<l-1){
+        if(mp[s[i]] == mp[s[i+1]]){
+            i++;
+        }else{
+            cnt++;
+            i++;
         }
     }
-    ld ans = 0;
-    for(ll i=0;i<n;i++){
-        ans += dist(coordinates[i].first,coordinates[i].second,l,-(c+a*l)/b);   
-    }
-    cout<<fixed<<setprecision(6)<<ans<<endl;
+    cout<<cnt<<endl;
 }
  
 int main()

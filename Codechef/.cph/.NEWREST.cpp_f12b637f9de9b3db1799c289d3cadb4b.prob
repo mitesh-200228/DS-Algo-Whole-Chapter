@@ -1,0 +1,1 @@
+{"name":"Local: NEWREST","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\NEWREST.cpp","tests":[{"id":1657614258731,"input":"4\n1 1 1\n2 2 2\n4 3 2\n5 7 3","output":"1\n4\n45\n5887"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\NEWREST.cpp","group":"local","local":true}
