@@ -55,7 +55,7 @@ void printBoundary(struct node* root)
 	printBoundaryLeft(root->left);
 	printLeaves(root->left);
 	printLeaves(root->right);
-	printBoundaryRight(root->right);
+	// printBoundaryRight(root->right);
 }
 
 struct node* newNode(int data)

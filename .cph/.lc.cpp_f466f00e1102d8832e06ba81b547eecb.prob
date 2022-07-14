@@ -1,1 +1,0 @@
-{"name":"Local: lc","url":"d:\\C++\\DS-Algo-Whole-Chapter\\lc.cpp","tests":[{"id":1655909510289,"input":"4\n8\n()(())()\n6\n((()))\n5\n)))()\n8\n((()))()","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\lc.cpp","group":"local","local":true}
