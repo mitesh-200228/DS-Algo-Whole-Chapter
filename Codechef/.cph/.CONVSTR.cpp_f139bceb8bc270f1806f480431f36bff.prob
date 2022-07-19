@@ -1,0 +1,1 @@
+{"name":"Local: CONVSTR","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\CONVSTR.cpp","tests":[{"id":1658135977529,"input":"3\n5\nabcab\naabab\n3\naaa\naab\n2\nde\ncd","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\CONVSTR.cpp","group":"local","local":true}
