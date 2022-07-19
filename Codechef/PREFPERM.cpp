@@ -1,83 +1,57 @@
-#include<unordered_set>
-#include<stack>
-#include<iostream>
-#include<vector>
-#include<string>
-#include<numeric>
-#include<cstring>
-#include<algorithm>
-#include<queue>
-#include <stdio.h>
-#include<stack>
-#include<map>
-#include<unordered_map>
-#include<set>
-#include<climits>
-#include<cmath>
-#include<math.h>
-#include<limits>
-#define ll long long int
-const ll N = 1e5+ 2,MOD = 1e9+7;
+#include <bits/stdc++.h>
 using namespace std;
-int power(ll a,ll b) {
-    ll ans = 1;
-    while(b>0){
-        if(b%2){
-            ans=ans*a;
-        }
-        a=a*a;b>>=1;
-    }
-    return ans;
+typedef long long ll;
+#define fi first
+#define se second
+const ll mod = 998244353;
+ll pw(ll x, ll y)
+{
+    if (y == 0)
+        return 1;
+    if (y % 2)
+        return x * pw(x, y - 1) % mod;
+    ll res = pw(x, y / 2);
+    return res * res % mod;
 }
-ll countSetBits(ll n) {
-    ll count = 0;
-    while (n)
-    {
-        count += n & 1;
-        n >>= 1;
-    }
-    return count;
-}
- 
-ll gcd(ll a, string b){
-    ll res = 0;
-    for (int i = 0; i < b.length(); i++){
-        res = ((res * 10) + (b[i] - '0')) % a;
-    }
-    return __gcd(a,res);
-}
- 
-void solve(){
-    ll n;cin>>n;
-    ll k;cin>>k;
-    std::vector<ll> v(k);
-    for(ll i=0;i<k;i++){
-        cin>>v[i];
-    }
-    std::vector<ll> res;
-    ll prev = 0;
-    for(ll i=0;i<k;i++){
-        for(ll m = v[i];m>prev;m--){
-            res.push_back(m);
-        }
-        prev=v[i];
-    }
-    for(auto i:res) {
-        cout<<i<<" ";
-    }cout<<"\n";
-}
- 
+int a[200001];
 int main()
 {
-    ios_base::sync_with_stdio(false);
+    ios::sync_with_stdio(false);
     cin.tie(0);
-    cout.tie(0);
- 
-    ll t;
-    cin>>t;
-    while(t--)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        solve();
+        int n, k;
+        cin >> n >> k;
+        for (int i = 1; i <= n; i++)
+            a[i] = i;
+        if (k == 1)
+        {
+            cout << n << ' ';
+            for (int i = 1; i < n; i++)
+                cout << i << ' ';
+            cout << '\n';
+        }
+        else if (k % 2 == n % 2)
+        {
+            for (int i = 0; i < (n - k) / 2; i++)
+            {
+                swap(a[n - i * 2], a[n - i * 2 - 1]);
+            }
+            for (int i = 1; i <= n; i++)
+                cout << a[i] << ' ';
+            cout << '\n';
+        }
+        else
+        {
+            for (int i = 0; i <= (n - k) / 2; i++)
+            {
+                swap(a[i * 2 + 1], a[i * 2 + 2]);
+            }
+            for (int i = 1; i <= n; i++)
+                cout << a[i] << ' ';
+            cout << '\n';
+        }
     }
-    return 0;
 }

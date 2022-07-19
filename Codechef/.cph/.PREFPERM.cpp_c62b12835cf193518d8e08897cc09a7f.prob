@@ -1,0 +1,1 @@
+{"name":"Local: PREFPERM","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\PREFPERM.cpp","tests":[{"id":1658248651146,"input":"7\n6 2\n7 7\n7 1\n8 1\n8 2 \n8 8\n8 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\PREFPERM.cpp","group":"local","local":true}
