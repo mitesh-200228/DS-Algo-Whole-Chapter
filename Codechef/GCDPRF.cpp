@@ -1,10 +1,10 @@
+// https://www.codechef.com/START17B/problems/GCDPRF
 #include <unordered_set>
 #include <stack>
 #include <iostream>
 #include <vector>
 #include <string>
 #include <numeric>
-#include <cstring>
 #include <algorithm>
 #include <queue>
 #include <stdio.h>
@@ -54,43 +54,49 @@ ll gcd(ll a, string b)
     return __gcd(a, res);
 }
 
-void print(vector<ll> v, ll n)
+bool primt(ll n)
 {
-    for (ll i = 0; i < n; i++)
+    if (n == 1)
     {
-        cout << v[i] << ' ';
+        return true;
     }
-    cout << endl;
+    if (n == 2 || n == 3)
+    {
+        return false;
+    }
+    for (ll i = 0; i * i <= n; i++)
+    {
+        if (n % i)
+            return false;
+    }
+    return true;
+}
+
+void print(vector<ll> v){
+    ll n = v.size();
+    for(ll i=0;i<n;i++){
+        cout<<v[i]<<" ";
+    }cout<<endl;
 }
 
 void solve()
 {
     ll n;
     cin >> n;
-    vector<ll> v(n);
-    map<ll, ll> mp;
-    for (ll i = 0; i < n; i++)
+    vector<ll> a(n);
+    for (auto &x : a)
+        cin >> x;
+    ll cur_gcd = a[0];
+    for (int i = 1; i < n; i++)
     {
-        cin >> v[i];
-        mp[v[i]]++;
-    }
-    ll cnt = 0;
-    for (auto it : mp)
-    {
-        for (ll i = 0; i < n; i++)
+        cur_gcd = __gcd(cur_gcd, a[i]);
+        if (cur_gcd != a[i])
         {
-            if (v[i] < it.first && (it.second > 0))
-            {
-                cnt++;
-                --it.second;
-                if (it.second == 0)
-                {
-                    mp.erase(it.first);
-                }
-            }
+            cout << -1 << endl;
+            return;
         }
     }
-    cout << cnt << endl;
+    print(a);
 }
 
 int main()
