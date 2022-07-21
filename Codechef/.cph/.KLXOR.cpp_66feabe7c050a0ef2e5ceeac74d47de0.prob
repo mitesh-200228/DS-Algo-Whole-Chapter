@@ -1,0 +1,1 @@
+{"name":"Local: KLXOR","url":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\KLXOR.cpp","tests":[{"id":1658413242541,"input":"4\n4 1\n1010\n4 2\n1001\n4 3\n1111\n4 4\n0110","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\Codechef\\KLXOR.cpp","group":"local","local":true}
