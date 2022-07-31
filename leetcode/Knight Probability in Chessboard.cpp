@@ -7,7 +7,7 @@
 #include<cstring>
 #include<algorithm>
 #include<queue>
-#include<stdio.h>
+#include <stdio.h>
 #include<stack>
 #include<map>
 #include<unordered_map>
@@ -52,31 +52,36 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
+
+ll x[] = {-2,-1,1,2,2,1,-1,-2};
+ll y[] = {1,2,2,1,-1,-2,-2,-1}; 
+
+double dp[26][26][101];
+
+double solveit(ll n,ll k,ll row,ll column){
+    if(k==0){
+        return 1;
+    }
+    if(row>=n || column>=n || row<0 || column<0){
+        return 0;
+    }
+    if(dp[row][column][k]){
+        return dp[row][column][k];
+    }
+    double sum = 0;
+    for(ll i=0;i<8;i++){
+        sum += solveit(n,k-1,row+x[i],column+y[i]);
+    } 
+    sum/=8;
+    return dp[row][column][k] = sum;
+}
+
 void solve(){
     ll n;cin>>n;
     ll k;cin>>k;
-    ll sum = 0;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-        sum += v[i];
-    }
-    if(k<(-1*sum) || k>sum){
-        cout<<0<<endl;
-        return;
-    }
-    ll dp[n+1][2*sum+1];
-    for(ll i=1;i<=n;i++){
-        for(ll j=0;j<=2*sum;j++){
-            if(j+v[i-1]<2*sum + 1){
-                dp[i][j] += dp[i-1][j+v[i-1]];
-            }else if(j-v[i-1]>=0){
-                dp[i][j] += dp[i-1][j-v[i-1]];
-            }
-        }   
-    }
-    cout<<dp[n][sum+k];
+    ll row,column;cin>>row>>column;
+    memset(dp,0,sizeof(dp));
+    cout<<solveit(n,k,row,column);
 }
  
 int main()

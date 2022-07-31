@@ -4,7 +4,8 @@
         "*.tcc": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

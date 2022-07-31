@@ -52,31 +52,35 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
+
+ll dp[51][51][51];
+
+ll dfs(ll m,ll n,ll maxMove,ll startRow,ll startColumn){
+    if(startRow<0 || startRow>=m || startColumn<0 || startColumn>=n){
+        return 1;
+    }
+    if(maxMove<=0){
+        return 0;
+    }
+    if(dp[startRow][startColumn][maxMove]!=-1){
+        return dp[startRow][startColumn][maxMove];
+    }
+    ll down = dfs(m,n,maxMove-1,startRow+1,startColumn);
+    ll right = dfs(m,n,maxMove-1,startRow,startColumn+1);
+    ll up = dfs(m,n,maxMove-1,startRow-1,startColumn);
+    ll left = dfs(m,n,maxMove-1,startRow,startColumn-1);
+    dp[startRow][startColumn][maxMove] = (down%MOD + up%MOD + left%MOD + right%MOD)%MOD;
+    return dp[startRow][startColumn][maxMove];
+}
+
 void solve(){
+    ll m;cin>>m;
     ll n;cin>>n;
-    ll k;cin>>k;
-    ll sum = 0;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-        sum += v[i];
-    }
-    if(k<(-1*sum) || k>sum){
-        cout<<0<<endl;
-        return;
-    }
-    ll dp[n+1][2*sum+1];
-    for(ll i=1;i<=n;i++){
-        for(ll j=0;j<=2*sum;j++){
-            if(j+v[i-1]<2*sum + 1){
-                dp[i][j] += dp[i-1][j+v[i-1]];
-            }else if(j-v[i-1]>=0){
-                dp[i][j] += dp[i-1][j-v[i-1]];
-            }
-        }   
-    }
-    cout<<dp[n][sum+k];
+    ll maxMove;cin>>maxMove;
+    ll startRow;cin>>startRow;
+    ll startColumn;cin>>startColumn;
+    memset(dp,-1,sizeof(dp));
+    cout<<dfs(m,n,maxMove,startRow,startColumn);
 }
  
 int main()

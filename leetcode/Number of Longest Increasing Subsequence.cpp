@@ -7,7 +7,7 @@
 #include<cstring>
 #include<algorithm>
 #include<queue>
-#include<stdio.h>
+#include <stdio.h>
 #include<stack>
 #include<map>
 #include<unordered_map>
@@ -55,28 +55,30 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
-    ll sum = 0;
     vector<ll> v(n);
     for(ll i=0;i<n;i++){
         cin>>v[i];
-        sum += v[i];
     }
-    if(k<(-1*sum) || k>sum){
-        cout<<0<<endl;
-        return;
+    vector<ll> dp(n+1,-1);
+    dp[0] = 0;
+    dp[1] = 1;
+    if(v[1]>=v[0]){
+        dp[2] = 2;
+    }else{
+        dp[2] = 1;
     }
-    ll dp[n+1][2*sum+1];
-    for(ll i=1;i<=n;i++){
-        for(ll j=0;j<=2*sum;j++){
-            if(j+v[i-1]<2*sum + 1){
-                dp[i][j] += dp[i-1][j+v[i-1]];
-            }else if(j-v[i-1]>=0){
-                dp[i][j] += dp[i-1][j-v[i-1]];
+    for(ll i=3;i<=n;i++){
+        if(v[i-1]>=v[i-2]){
+            dp[i] = dp[i-1] + 1;
+        }else{
+            if(v[i-1]>=v[i-3]){
+                dp[i] = max(dp[i-1],dp[i-2]+1);
+            }else{
+                dp[i] = max(dp[max(0ll,i-4)],dp[i-1]);
             }
-        }   
+        }
     }
-    cout<<dp[n][sum+k];
+    cout<<dp[n];
 }
  
 int main()
