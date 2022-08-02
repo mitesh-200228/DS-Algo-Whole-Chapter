@@ -55,14 +55,9 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
     vector<ll> v(n);
     for(ll i=0;i<n;i++){
         cin>>v[i];
-    }
-    ll dp[n][k];
-    for(ll i=0;i<n;i++){
-        dp[0][i] = v[0];
     }
 }
  
@@ -79,4 +74,4 @@ int main()
         solve();
     }
     return 0;
-}
+}s
