@@ -53,64 +53,30 @@ void print(vector<ll> v,ll n){
     }cout<<endl;
 }
  
-ll merge(std::vector<ll> v,ll l,ll mid,ll r){
-    ll inv = 0;
-    ll n1 = mid - l + 1;
-    ll n2 = r - mid;
-    std::vector<ll> a(n1);
-    std::vector<ll> b(n2);
-    for(ll i=0;i<n1;i++){
-        a[i] = v[l+i];
-    }   
-    for(ll i=0;i<n2;i++){
-        b[i] = v[1+mid+i];
-    }
-    ll i=0;
-    ll j=0;
-    ll k = 0;
-    while(i<n1 && j<n2){
-        if(a[i]<=b[j]){
-            v[k] = a[i];
-            k++;
-            i++;
+void solve(){
+    string s;cin>>s;
+    ll n = s.length();
+    stack<char> st;
+    st.push('$');
+    for(ll i=0;i<n;i++){
+        char t = st.top();
+        if((s[i] == 'A' && t == 'B') || (s[i] == 'B' && t == 'A') || (s[i] == 'C' && t == 'D') || (s[i] == 'D' && t == 'C')){
+            st.pop();
         }else{
-            v[k] = b[j];
-            k++;
-            j++;
-            inv += n1-i;
+            st.push(s[i]);
         }
     }
-    while(i<n1){
-        v[k] = a[i];
-        k++;
-        i++;
+    if(st.size() == 1){
+        cout<<" "<<endl;
+        return;
     }
-    while(j<n2){
-        v[k] = b[j];
-        j++;k++;
+    string t = "";
+    while(st.size()>1){
+        t += st.top();
+        st.pop();
     }
-    return inv;
-}
-
-ll countinvesion(std::vector<ll> v,ll l,ll r){
-    ll inv = 0;
-    if(l<r){
-        ll mid = l + (r-l)/2;
-        inv += countinvesion(v,l,mid);
-        inv += countinvesion(v,mid+1,r);
-        inv += merge(v,l,mid,r);
-    }
-    return inv;
-}
-
-void solve(){
-    ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
-    }
-    cout<<countinvesion(v,0,n-1);
-    // No link Available in Question sheet, if anyone know, please create pull req with question and answer
+    reverse(t.begin(),t.end());
+    cout<<t<<endl;
 }
  
 int main()

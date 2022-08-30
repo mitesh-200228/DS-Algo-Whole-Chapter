@@ -52,13 +52,43 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
-void solve(){
-    ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
+
+bool checker(ll i,ll j,ll m){
+    if(i<0 || j<0 || i>=2 || j>=m){
+        return 0;
     }
+    return 1;
+}
+
+ll solver(vector<vector<ll>> matrix,ll &dp[][],ll m,ll i,ll j){
+    ll u,v,w,x;
+    if(matrix[i+1][j] <= matrix[i][j] + 1 && checker(i+1,j,m)){
+        u = matrix[i+1][j] - matrix[i][j];
+    }
+    if(matrix[i][j+1] <= matrix[i][j] + 1 && checker(i,j+1,m)){
+        v = matrix[i][1+j] - matrix[i][j];
+    }
+    if(matrix[i][j-1] <= matrix[i][j] + 1 && checker(i,j-1,m)){
+        w = matrix[i][j-1] - matrix[i][j];
+    }
+    if(matrix[i-1][j] <= matrix[i][j] + 1 && checker(i-1,j,m)){
+        x = matrix[i+1][j] - matrix[i][j];
+    }
+    return dp[i][j] = solver(matrix,dp,m,i+1,j) + solver(matrix,dp,m,i,j+1) + solver(matrix,dp,m,i-1,j) + solver(matrix,dp,m,i,j-1);
+}
+
+void solve(){
+    ll m;cin>>m;
+    vector<vector<ll>> matrix(2,vector<ll> (m,0));
+    for(ll i=0;i<2;i++){
+        for(ll j=0;j<m;j++){
+            cin>>matrix[i][j];
+        }   
+    }
+    ll dp[2][m];
+    memset(dp,-1,sizeof(dp));
+    solver(matrix,dp,m,0,0);
+    cout<<dp[2][m]<<endl;
 }
  
 int main()
@@ -74,4 +104,4 @@ int main()
         solve();
     }
     return 0;
-}s
+}

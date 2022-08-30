@@ -47,40 +47,31 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
+void print(vector<ll> v,ll n){
+    for(ll i=0;i<n;i++){
+        cout<<v[i]<<' ';
+    }cout<<endl;
+}
+ 
 void solve(){
     ll n;cin>>n;
-    vector<ll> v;
-    ll zero = 0;
-    unordered_map<ll,ll> ump;
-    ll mini = INT_MAX;
-    ll maxi = INT_MIN;
-    for(ll i=0;i<2*n;i++){
-        ll a;cin>>a;
-        v.push_back(a);
-        mini = min(mini,v[i]);
-        maxi = max(maxi,v[i]);
-    }
-    ll cnta = 0;
-    ll cntb = 0;
-    for(auto it1:v){
-        if(it1 == maxi) {
-            cnta++;
-        }
-    }
-    for(auto it2:v){
-        if(it2 == mini){
-            cntb++;
-        }
-    }
-    if(mini<1){
-        if(cnta%2 == 0 && cntb%2 == 0){
-            cout<<"YES"<<endl;
+    ll m;cin>>m;
+    std::vector<ll> v(n);
+    std::map<ll,ll> mp;
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+        if(v[i]<0){
+            v[i] = (m-(-v[i]%m))%m;
         }else{
-            cout<<"NO"<<endl;
+            v[i] = v[i]%m;
         }
-    }else{
-        cout<<"YES"<<endl;
+        mp[v[i]]++;   
     }
+    ll mx = INT_MIN;
+    for(auto it:mp){
+        mx = max(mx,it.second);
+    }
+    cout<<mx<<endl;
 }
  
 int main()

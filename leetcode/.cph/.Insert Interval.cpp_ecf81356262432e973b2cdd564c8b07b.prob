@@ -1,0 +1,1 @@
+{"name":"Local: Insert Interval","url":"d:\\C++\\DS-Algo-Whole-Chapter\\leetcode\\Insert Interval.cpp","tests":[{"id":1660323464567,"input":"1\n5\n2 4 1 3 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\DS-Algo-Whole-Chapter\\leetcode\\Insert Interval.cpp","group":"local","local":true}
